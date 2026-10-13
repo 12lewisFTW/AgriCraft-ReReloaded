@@ -2,6 +2,8 @@
 
 All repository documentation is maintained in English.
 
+- [Player wiki](https://github.com/Vivoxti/AgriCraft-ReReloaded/wiki): compatibility modules, practical farming, exact balances and searchable crop catalogs. [Versioned wiki source](wiki/README.md).
+
 - [User guide](starfield/USER-GUIDE.md): setup, gameplay, genes, tools and support limits.
 - [Release 4.0.20 notes](releases/4.0.20.md) and [verification](releases/4.0.20-VALIDATION.md).
 - [Completion acceptance](starfield/ACCEPTANCE.md) and [ordinary gameplay acceptance](starfield/GAMEPLAY-ACCEPTANCE.md): evidence and the scope of each check.

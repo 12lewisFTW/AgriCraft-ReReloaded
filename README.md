@@ -2,6 +2,8 @@
 
 Agricultural farming extended.
 
+Read the [English player wiki](https://github.com/Vivoxti/AgriCraft-ReReloaded/wiki) for every compatibility module, practical farm setups, crop catalogs and exact gene balances. The [compatibility index](https://github.com/Vivoxti/AgriCraft-ReReloaded/wiki/Compatibility-Overview) lists platform support and the status of unfinished adapters.
+
 Original available on [CurseForge](https://www.curseforge.com/minecraft/mc-mods/agricraft) and [Modrinth](https://modrinth.com/mod/agricraft).
 
 Fork available on [CurseForge](https://www.curseforge.com/minecraft/mc-mods/agricraft-rereloaded)
@@ -21,6 +23,3 @@ Optional **Starfield Pastoral 0.6.3fix1** compatibility is available on NeoForge
 See the [user guide](docs/starfield/USER-GUIDE.md) for setup and gameplay, [release notes](docs/releases/4.0.20.md) for supported features and limits, and [acceptance report](docs/starfield/ACCEPTANCE.md) for verification.
 
 For source builds, generate the compatibility data with `gradlew :neoforge:runData` before running `gradlew build`. To check the Croptopia packs against an installed Croptopia 4.x jar, run `python tests/verify_croptopia_pack.py <Croptopia.jar> <AgriCraft-neoforge.jar> <AgriCraft-fabric.jar>`.
-
-// Null particle texture still shows up when walking on the cropsticks or when trampling crops with cropsticks added.
-// If the can't trample config is true then the farmland should also stay farmland if jumped on, at the moment it turns to dirt just the crop doesn't break.

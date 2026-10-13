@@ -1,0 +1,1 @@
+AgriCraft ReReloaded **4.0.20** · Minecraft **1.21.1** · English player documentation · Defaults can be overridden by modpacks. [Module index](https://github.com/Vivoxti/AgriCraft-ReReloaded/wiki/Compatibility-Overview) · [Sources and scope](https://github.com/Vivoxti/AgriCraft-ReReloaded/wiki/About-These-Guides)
