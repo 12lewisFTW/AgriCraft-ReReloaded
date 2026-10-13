@@ -1,0 +1,341 @@
+import java.security.MessageDigest
+import java.util.zip.GZIPOutputStream
+import java.util.zip.ZipEntry
+import java.util.zip.ZipOutputStream
+
+def prototypeRoot = rootProject.file('tests/starfield')
+def compatMode = providers.gradleProperty('starfieldTestMode').orNull
+if (compatMode != null && !(compatMode in ['enabled', 'disabled', 'absent', 'incompatible'])) {
+	throw new GradleException('starfieldTestMode must be enabled, disabled, absent or incompatible')
+}
+if (providers.gradleProperty('starfieldGeneticsTests').isPresent() && compatMode != 'enabled') {
+    throw new GradleException('starfieldGeneticsTests requires -PstarfieldTestMode=enabled')
+}
+if (providers.gradleProperty('starfieldDailyTests').isPresent() && compatMode != 'enabled') {
+    throw new GradleException('starfieldDailyTests requires -PstarfieldTestMode=enabled')
+}
+if (providers.gradleProperty('starfieldHarvestTests').isPresent() && compatMode != 'enabled') {
+    throw new GradleException('starfieldHarvestTests requires -PstarfieldTestMode=enabled')
+}
+if (providers.gradleProperty('starfieldToolTests').isPresent() && compatMode != 'enabled') {
+    throw new GradleException('starfieldToolTests requires -PstarfieldTestMode=enabled')
+}
+if (providers.gradleProperty('starfieldIrrigationTests').isPresent() && compatMode != 'enabled') {
+    throw new GradleException('starfieldIrrigationTests requires -PstarfieldTestMode=enabled')
+}
+if (providers.gradleProperty('starfieldBreedingTests').isPresent() && compatMode != 'enabled') {
+    throw new GradleException('starfieldBreedingTests requires -PstarfieldTestMode=enabled')
+}
+if (providers.gradleProperty('starfieldSpecialTests').isPresent() && compatMode != 'enabled') {
+    throw new GradleException('starfieldSpecialTests requires -PstarfieldTestMode=enabled')
+}
+if (providers.gradleProperty('starfieldGiantTests').isPresent() && compatMode != 'enabled') {
+    throw new GradleException('starfieldGiantTests requires -PstarfieldTestMode=enabled')
+}
+def dependencyLock = new groovy.json.JsonSlurper().parse(new File(prototypeRoot, 'dependencies.json'))
+if (providers.gradleProperty('starfieldAutomationTests').isPresent() && compatMode != 'enabled') {
+    throw new GradleException('starfieldAutomationTests requires -PstarfieldTestMode=enabled')
+}
+if (providers.gradleProperty('starfieldCreateTests').isPresent() && !providers.gradleProperty('starfieldAutomationTests').isPresent()) {
+    throw new GradleException('starfieldCreateTests requires -PstarfieldAutomationTests')
+}
+if (providers.gradleProperty('starfieldReleaseTests').isPresent() && compatMode != 'enabled') {
+    throw new GradleException('starfieldReleaseTests requires -PstarfieldTestMode=enabled')
+}
+if (providers.gradleProperty('starfieldMachineTests').isPresent() && compatMode != 'enabled') {
+    throw new GradleException('starfieldMachineTests requires -PstarfieldTestMode=enabled')
+}
+if (providers.gradleProperty('starfieldAbsentClientTests').isPresent() && compatMode != 'absent') {
+    throw new GradleException('starfieldAbsentClientTests requires -PstarfieldTestMode=absent')
+}
+if (providers.gradleProperty('starfieldReleaseOnly').isPresent() && !providers.gradleProperty('starfieldReleaseTests').isPresent()) {
+    throw new GradleException('starfieldReleaseOnly requires -PstarfieldReleaseTests')
+}
+def migrationPhase = providers.gradleProperty('starfieldMigrationPhase').orNull
+if (migrationPhase != null && (!(migrationPhase in ['write', 'disabled', 'read'])
+        || compatMode != (migrationPhase == 'disabled' ? 'disabled' : 'enabled'))) {
+    throw new GradleException('Migration requires write/read with enabled mode, or disabled with disabled mode')
+}
+def compatRunDir = migrationPhase == null ? "build/starfield-compat-${compatMode}-run" : 'build/starfield-migration-run'
+if (providers.gradleProperty('starfieldSaveDiagnostics').isPresent()) {
+    if (compatMode == null) throw new GradleException('Save diagnostics requires a starfieldTestMode')
+    if (!(providers.gradleProperty('starfieldSaveRun').getOrElse('1') ==~ /[a-z0-9-]{1,64}/))
+        throw new GradleException('starfieldSaveRun must contain 1-64 lowercase letters, digits or hyphens')
+    compatRunDir = 'build/starfield-save-diagnostics-' + providers.gradleProperty('starfieldSaveRun').getOrElse('1')
+}
+def runtimeLock = compatMode == 'incompatible' ? dependencyLock.unverified_starfield : dependencyLock.starfield
+def starfieldJar = rootProject.file("build/starfield-iteration0/dependencies/${runtimeLock.file}")
+if (!starfieldJar.isFile()) {
+	throw new GradleException('Run python tests/starfield/prepare.py before enabling -PstarfieldPrototype')
+}
+def digest = MessageDigest.getInstance('SHA-256')
+starfieldJar.withInputStream { input ->
+	byte[] buffer = new byte[65536]
+	int count
+	while ((count = input.read(buffer)) != -1) digest.update(buffer, 0, count)
+}
+if (digest.digest().encodeHex().toString() != runtimeLock.sha256) {
+	throw new GradleException('Starfield prototype dependency SHA-256 differs from dependencies.json')
+}
+
+dependencies {
+	if (compatMode != 'absent') modImplementation files(starfieldJar).builtBy(tasks.named('prepareStarfieldCompileDependency'))
+    if (providers.gradleProperty('starfieldCreateTests').isPresent()) {
+        modLocalRuntime("com.simibubi.create:create-$minecraft_version:$create_version:slim") { transitive = false }
+        modLocalRuntime("net.createmod.ponder:ponder-neoforge:$ponder_version+mc$minecraft_version") { transitive = false }
+        modLocalRuntime("dev.engine-room.flywheel:flywheel-neoforge-$minecraft_version:$flywheel_version") { transitive = false }
+        modLocalRuntime("com.tterrag.registrate:Registrate:$registrate_version") { transitive = false }
+    }
+    if (providers.gradleProperty('starfieldMachineTests').isPresent()) {
+        modLocalRuntime('maven.modrinth:industrial-foregoing:1.21-3.6.39') { transitive = false }
+        modLocalRuntime('maven.modrinth:titanium:1.21-4.0.45') { transitive = false }
+        modLocalRuntime('maven.modrinth:pneumaticcraft-repressurized:8.2.21') { transitive = false }
+    }
+}
+
+sourceSets {
+	main {
+		if (compatMode == null) java.srcDir new File(prototypeRoot, 'java')
+		else {
+			java.srcDir new File(prototypeRoot, 'safe-java')
+            if (providers.gradleProperty('starfieldSaveDiagnostics').isPresent())
+                java.srcDir new File(prototypeRoot, 'save-diagnostics-java')
+			if (compatMode == 'enabled' && (migrationPhase == null || providers.gradleProperty('starfieldMigrationReloadTests').isPresent()) && !providers.gradleProperty('starfieldReleaseOnly').isPresent()) java.srcDir new File(prototypeRoot, 'catalog-java')
+            if (compatMode == 'enabled' && providers.gradleProperty('starfieldGeneticsTests').isPresent())
+                java.srcDir new File(prototypeRoot, 'genetics-java')
+            if (compatMode == 'enabled' && providers.gradleProperty('starfieldDailyTests').isPresent())
+                java.srcDir new File(prototypeRoot, 'daily-java')
+            if (compatMode == 'enabled' && providers.gradleProperty('starfieldHarvestTests').isPresent())
+                java.srcDir new File(prototypeRoot, 'harvest-java')
+            if (compatMode == 'enabled' && providers.gradleProperty('starfieldToolTests').isPresent())
+                java.srcDir new File(prototypeRoot, 'tools-java')
+            if (compatMode == 'enabled' && providers.gradleProperty('starfieldIrrigationTests').isPresent())
+                java.srcDir new File(prototypeRoot, 'irrigation-java')
+            if (compatMode == 'enabled' && providers.gradleProperty('starfieldBreedingTests').isPresent())
+                java.srcDir new File(prototypeRoot, 'breeding-java')
+            if (compatMode == 'enabled' && providers.gradleProperty('starfieldSpecialTests').isPresent())
+                java.srcDir new File(prototypeRoot, 'special-java')
+            if (compatMode == 'enabled' && providers.gradleProperty('starfieldGiantTests').isPresent())
+                java.srcDir new File(prototypeRoot, 'giant-java')
+            if (compatMode == 'enabled' && providers.gradleProperty('starfieldAutomationTests').isPresent())
+                java.srcDir new File(prototypeRoot, 'automation-java')
+            if (providers.gradleProperty('starfieldCreateTests').isPresent())
+                java.srcDir new File(prototypeRoot, 'create-java')
+            if (providers.gradleProperty('starfieldReleaseTests').isPresent())
+                java.srcDir new File(prototypeRoot, 'release-java')
+            if (migrationPhase != null)
+                java.srcDir new File(prototypeRoot, 'migration-java')
+            if (providers.gradleProperty('starfieldClientAcceptance').isPresent())
+                java.srcDir new File(prototypeRoot, 'acceptance-java')
+            if (providers.gradleProperty('starfieldAbsentClientTests').isPresent())
+                java.srcDir new File(prototypeRoot, 'absent-client-java')
+            if (providers.gradleProperty('starfieldMachineTests').isPresent())
+                java.srcDir new File(prototypeRoot, 'machines-java')
+		}
+		resources.srcDir rootProject.file('build/starfield-iteration0/probe-resources')
+	}
+}
+
+// A small empty structure authored here; no native assets are copied into the project.
+def generateProbeStructure = tasks.register('generateStarfieldProbeStructure') {
+	def output = rootProject.file('build/starfield-iteration0/probe-resources/data/agricraft/structure/starfield_probe.nbt')
+	outputs.file output
+	inputs.property 'compatMode', compatMode ?: 'prototype'
+	doLast {
+		output.parentFile.mkdirs()
+		new DataOutputStream(new GZIPOutputStream(new FileOutputStream(output))).withCloseable { data ->
+			data.writeByte(10); data.writeUTF('')
+			data.writeByte(3); data.writeUTF('DataVersion'); data.writeInt(3955)
+			data.writeByte(9); data.writeUTF('size'); data.writeByte(3); data.writeInt(3)
+			3.times { data.writeInt(5) }
+			['palette', 'blocks', 'entities'].each { name ->
+				data.writeByte(9); data.writeUTF(name); data.writeByte(10); data.writeInt(0)
+			}
+			data.writeByte(0)
+		}
+	}
+}
+tasks.named('processResources') { dependsOn generateProbeStructure }
+
+// A separate local descriptor activates development observers; the release manifest
+// never references them. No changes to chunk readiness, futures or unloading.
+if (providers.gradleProperty('starfieldSaveDiagnostics').isPresent()) {
+    def marker = rootProject.file('build/starfield-iteration0/save-diagnostics-marker.jar')
+    marker.parentFile.mkdirs()
+    new ZipOutputStream(new FileOutputStream(marker)).withCloseable { zip ->
+        zip.putNextEntry(new ZipEntry('META-INF/neoforge.mods.toml'))
+        zip.write(('modLoader="javafml"\nloaderVersion="[2,)"\nlicense="MIT"\n' +
+            '[[mods]]\nmodId="agricraft_save_diagnostics"\nversion="1"\n' +
+            '[[mixins]]\nconfig="agricraft-save-diagnostics.mixins.json"\n').getBytes('UTF-8'))
+        zip.closeEntry()
+        zip.putNextEntry(new ZipEntry('agricraft-save-diagnostics.mixins.json'))
+        zip.write(groovy.json.JsonOutput.toJson([required: true, minVersion: '0.8',
+            package: 'com.agricraft.agricraft.starfield.prototype.save.mixin', compatibilityLevel: 'JAVA_21',
+            mixins: ['SaveChunkMapMixin', 'SaveServerMixin', 'HistoricalGameTestsMixin', 'HistoricalPositionMixin'],
+            injectors: [defaultRequire: 1]]).getBytes('UTF-8'))
+        zip.closeEntry()
+    }
+    dependencies { modLocalRuntime files(marker) }
+}
+tasks.named('processResources') {
+    inputs.property 'saveDiagnostics', providers.gradleProperty('starfieldSaveDiagnostics').isPresent()
+    doLast {
+        def config = new File(destinationDir, 'agricraft-save-diagnostics.mixins.json')
+        config.delete()
+    }
+}
+
+// GameTestServer bakes only the flat preset, ignoring datapack dimension entries.
+// Author a test-only preset that creates a real Starfield ServerLevel with its native
+// dimension type. No dimension key is spoofed and no crop rules/assets are copied.
+def generateProbePreset = tasks.register('generateStarfieldProbePreset') {
+	def output = rootProject.file('build/starfield-iteration0/probe-resources/data/minecraft/worldgen/world_preset/flat.json')
+	outputs.file output
+	inputs.property 'compatMode', compatMode ?: 'prototype'
+	doLast {
+		def flat = [type: 'minecraft:flat', settings: [biome: 'minecraft:plains',
+			layers: [[block: 'minecraft:bedrock', height: 1], [block: 'minecraft:dirt', height: 2],
+				[block: 'minecraft:grass_block', height: 1]], lakes: false, features: false,
+			structure_overrides: []]]
+		def dimensions = [
+			'minecraft:overworld': [type: 'minecraft:overworld', generator: flat],
+			'minecraft:the_nether': [type: 'minecraft:the_nether', generator: [type: 'minecraft:noise',
+				settings: 'minecraft:nether', biome_source: [type: 'minecraft:multi_noise', preset: 'minecraft:nether']]],
+			'minecraft:the_end': [type: 'minecraft:the_end', generator: [type: 'minecraft:noise',
+				settings: 'minecraft:end', biome_source: [type: 'minecraft:the_end']]],
+			'stardewcraft:stardew_valley': [type: 'stardewcraft:stardew_valley', generator: flat]
+		]
+		if (compatMode == 'absent') dimensions.remove('stardewcraft:stardew_valley')
+		output.parentFile.mkdirs()
+		output.text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson([dimensions: dimensions]))
+	}
+}
+tasks.named('processResources') { dependsOn generateProbePreset }
+
+// Registry fixture exists only in the opt-in breeding development profile.
+def generateBreedingRecipe = tasks.register('generateStarfieldBreedingRecipe') {
+    def output = rootProject.file('build/starfield-iteration0/probe-resources/data/agricraft/agricraft/mutations/starfield_probe.json')
+    inputs.property 'breeding', providers.gradleProperty('starfieldBreedingTests').isPresent()
+    outputs.file output
+    doLast {
+        if (providers.gradleProperty('starfieldBreedingTests').isPresent()) {
+            output.parentFile.mkdirs()
+            output.text = groovy.json.JsonOutput.toJson([child: 'stardewcraft:cauliflower_crop',
+                parent1: 'stardewcraft:potato_crop', parent2: 'stardewcraft:carrot_crop', chance: 1.0])
+        } else { output.delete() }
+    }
+}
+tasks.named('processResources') {
+    dependsOn generateBreedingRecipe
+    doFirst {
+        if (!providers.gradleProperty('starfieldBreedingTests').isPresent())
+            delete new File(destinationDir, 'data/agricraft/agricraft/mutations/starfield_probe.json')
+    }
+}
+
+if (compatMode != null) {
+	def runFolder = file(compatRunDir)
+	def prepareCompatRun = tasks.register('prepareStarfieldCompatRun') {
+		doLast {
+			def config = new File(runFolder, 'config/agricraft.jsonc')
+			config.parentFile.mkdirs()
+			config.text = groovy.json.JsonOutput.toJson([compat: [starfield: compatMode != 'disabled']])
+		}
+	}
+	def generateExpectedCatalog = tasks.register('generateStarfieldProbeCatalog') {
+		def source = rootProject.file('docs/starfield/crop-catalog.json')
+		def output = rootProject.file('build/starfield-iteration0/probe-resources/data/agricraft/starfield_probe_catalog.json')
+		inputs.file source
+		outputs.file output
+		doLast { output.parentFile.mkdirs(); output.bytes = source.bytes }
+	}
+	tasks.named('processResources') { dependsOn generateExpectedCatalog }
+	afterEvaluate { tasks.named('runStarfieldPrototype') { dependsOn prepareCompatRun } }
+}
+
+loom {
+	runs {
+        if (providers.gradleProperty('starfieldAbsentClientTests').isPresent()) {
+            starfieldAbsentClient {
+                client()
+                runDir 'build/starfield-absent-client'
+                vmArg '-Xmx2G'
+                vmArg '-Djava.util.concurrent.ForkJoinPool.common.parallelism=1'
+                vmArg "-Dagricraft.starfield.absentClientResult=${rootProject.file('build/starfield-iteration0/no-starfield-client-result.txt')}"
+            }
+        }
+        if (providers.gradleProperty('starfieldClientAcceptance').isPresent()) {
+            acceptanceServer {
+                server()
+                runDir 'build/starfield-acceptance-server'
+                vmArg '-Dagricraft.starfield.clientAcceptanceServer=true'
+                vmArg '-Djava.util.concurrent.ForkJoinPool.common.parallelism=1'
+                vmArg "-Dagricraft.starfield.acceptanceResult=${rootProject.file('build/starfield-iteration0/client-acceptance-result.txt')}"
+            }
+            ['A', 'B'].each { suffix ->
+                create("acceptanceClient${suffix}") {
+                    client()
+                    runDir "build/starfield-acceptance-client-${suffix}"
+                    programArgs '--username', "StarfieldProbe${suffix}", '--quickPlayMultiplayer', '127.0.0.1:25579', '--width', '960', '--height', '540'
+                    vmArg "-Dagricraft.starfield.acceptanceClient=Probe${suffix}"
+                    vmArg '-Dagricraft.starfield.acceptanceAddress=127.0.0.1:25579'
+                    vmArg '-Xmx4G'
+                    vmArg '-Djava.util.concurrent.ForkJoinPool.common.parallelism=1'
+                }
+            }
+        }
+		starfieldPrototype {
+			server()
+			runDir compatMode == null ? 'build/starfield-prototype-run' : compatRunDir
+			vmArg '-Dneoforge.gameTestServer=true'
+            vmArg '-Djava.util.concurrent.ForkJoinPool.common.parallelism=1'
+			vmArg '-Dneoforge.enabledGameTestNamespaces=agricraft'
+            if (providers.gradleProperty('starfieldSaveHistoricalTests').isPresent()) {
+                if (!providers.gradleProperty('starfieldSaveDiagnostics').isPresent())
+                    throw new GradleException('Historical reproduction requires -PstarfieldSaveDiagnostics')
+                vmArg '-Dagricraft.starfield.saveHistoricalTests=true'
+            }
+			if (compatMode != null) vmArg "-Dagricraft.starfield.testMode=${compatMode}"
+            if (migrationPhase != null) {
+                vmArg "-Dagricraft.starfield.migrationPhase=${migrationPhase}"
+                def migrationWitness = providers.gradleProperty('starfieldSaveDiagnostics').isPresent()
+                    ? "save-diagnostics-${providers.gradleProperty('starfieldSaveRun').getOrElse('1')}-witness.nbt"
+                    : 'iteration13-migration-witness.nbt'
+                vmArg "-Dagricraft.starfield.migrationWitness=${rootProject.file('build/starfield-iteration0/' + migrationWitness)}"
+            }
+			if (providers.gradleProperty('starfieldRestartPhase').isPresent()) {
+				def phase = providers.gradleProperty('starfieldRestartPhase').get()
+				if (!(phase in ['write', 'read'])) throw new GradleException('starfieldRestartPhase must be write or read')
+				vmArg "-Dagricraft.starfield.restartPhase=${phase}"
+                def witness = providers.gradleProperty('starfieldGeneticsTests').isPresent() ? 'iteration2-restart-witness.nbt' : 'restart-witness.nbt'
+                vmArg "-Dagricraft.starfield.restartWitness=${rootProject.file('build/starfield-iteration0/' + witness)}"
+                if (providers.gradleProperty('starfieldDailyTests').isPresent())
+                    vmArg "-Dagricraft.starfield.dailyRestartWitness=${rootProject.file('build/starfield-iteration0/iteration3-restart-witness.nbt')}"
+			}
+		}
+	}
+}
+
+if (providers.gradleProperty('starfieldClientAcceptance').isPresent()) {
+    if (compatMode != 'enabled') throw new GradleException('Client acceptance requires enabled test mode')
+    def prepareClients = tasks.register('prepareStarfieldClientAcceptance') {
+        doLast {
+            ['server', 'client-A', 'client-B'].each { suffix ->
+                def folder = file("build/starfield-acceptance-${suffix}")
+                def config = new File(folder, 'config/agricraft.jsonc')
+                config.parentFile.mkdirs()
+                config.text = groovy.json.JsonOutput.toJson([compat: [starfield: true]])
+                if (suffix != 'server') new File(folder, 'options.txt').text = 'onboardAccessibility:true\nskipMultiplayerWarning:true\nrenderDistance:4\nsimulationDistance:5\npauseOnLostFocus:false\n'
+                if (suffix == 'server') {
+                    new File(folder, 'eula.txt').text = 'eula=true\n'
+                    new File(folder, 'server.properties').text = 'server-ip=127.0.0.1\nserver-port=25579\nonline-mode=false\nenforce-secure-profile=false\nlevel-type=minecraft:flat\nview-distance=4\nsimulation-distance=4\nspawn-protection=0\nmax-tick-time=180000\n'
+                }
+            }
+        }
+    }
+    afterEvaluate {
+        ['runAcceptanceServer', 'runAcceptanceClientA', 'runAcceptanceClientB'].each { name ->
+            tasks.named(name) { dependsOn prepareClients }
+        }
+    }
+}

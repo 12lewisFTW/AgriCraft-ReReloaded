@@ -1,0 +1,1088 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "df2151c66a2a9c02855e4db23108e57c422ce78e",
+  "release": "0.6.3fix1",
+  "crops": [
+    {
+      "id": "stardewcraft:amaranth_crop",
+      "class": "AmaranthCropBlock",
+      "seed": "stardewcraft:amaranth_seeds",
+      "produce": "stardewcraft:amaranth",
+      "phaseDays": [
+        1,
+        2,
+        2,
+        2
+      ],
+      "seasons": [
+        "fall"
+      ],
+      "regrowDays": null,
+      "geometry": "two_parts",
+      "harvest": "scythe",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:ancient_fruit_crop",
+      "class": "AncientFruitCropBlock",
+      "seed": "stardewcraft:ancient_fruit_seeds",
+      "produce": "stardewcraft:ancient_fruit",
+      "phaseDays": [
+        2,
+        7,
+        7,
+        7,
+        5
+      ],
+      "seasons": [
+        "spring",
+        "summer",
+        "fall"
+      ],
+      "regrowDays": 7,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:artichoke_crop",
+      "class": "ArtichokeCropBlock",
+      "seed": "stardewcraft:artichoke_seeds",
+      "produce": "stardewcraft:artichoke",
+      "phaseDays": [
+        2,
+        2,
+        1,
+        2,
+        1
+      ],
+      "seasons": [
+        "fall"
+      ],
+      "regrowDays": null,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:beet_crop",
+      "class": "BeetCropBlock",
+      "seed": "stardewcraft:beet_seeds",
+      "produce": "stardewcraft:beet",
+      "phaseDays": [
+        1,
+        1,
+        2,
+        2
+      ],
+      "seasons": [
+        "fall"
+      ],
+      "regrowDays": null,
+      "geometry": "single_block",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:blue_jazz_crop",
+      "class": "BlueJazzCropBlock",
+      "seed": "stardewcraft:blue_jazz_seeds",
+      "produce": "stardewcraft:blue_jazz",
+      "phaseDays": [
+        1,
+        2,
+        2,
+        2
+      ],
+      "seasons": [
+        "spring"
+      ],
+      "regrowDays": null,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:blueberry_crop",
+      "class": "BlueberryCropBlock",
+      "seed": "stardewcraft:blueberry_seeds",
+      "produce": "stardewcraft:blueberry",
+      "phaseDays": [
+        1,
+        3,
+        3,
+        4,
+        2
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "regrowDays": 4,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:bok_choy_crop",
+      "class": "BokChoyCropBlock",
+      "seed": "stardewcraft:bok_choy_seeds",
+      "produce": "stardewcraft:bok_choy",
+      "phaseDays": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "seasons": [
+        "fall"
+      ],
+      "regrowDays": null,
+      "geometry": "single_block",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:broccoli_crop",
+      "class": "BroccoliCropBlock",
+      "seed": "stardewcraft:broccoli_seeds",
+      "produce": "stardewcraft:broccoli",
+      "phaseDays": [
+        1,
+        2,
+        2,
+        3
+      ],
+      "seasons": [
+        "fall"
+      ],
+      "regrowDays": 4,
+      "geometry": "single_block",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:cactus_fruit_crop",
+      "class": "CactusFruitCropBlock",
+      "seed": "stardewcraft:cactus_seeds",
+      "produce": "stardewcraft:cactus_fruit",
+      "phaseDays": [
+        2,
+        2,
+        2,
+        3,
+        3
+      ],
+      "seasons": [
+        "spring",
+        "summer",
+        "fall",
+        "winter"
+      ],
+      "regrowDays": 3,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": "Все сезоны; посадка только в помещении/теплице или на острове"
+    },
+    {
+      "id": "stardewcraft:carrot_crop",
+      "class": "CarrotCropBlock",
+      "seed": "stardewcraft:carrot_seeds",
+      "produce": "stardewcraft:carrot",
+      "phaseDays": [
+        1,
+        1,
+        1
+      ],
+      "seasons": [
+        "spring"
+      ],
+      "regrowDays": null,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:cauliflower_crop",
+      "class": "CauliflowerCropBlock",
+      "seed": "stardewcraft:cauliflower_seeds",
+      "produce": "stardewcraft:cauliflower",
+      "phaseDays": [
+        1,
+        2,
+        4,
+        4,
+        1
+      ],
+      "seasons": [
+        "spring"
+      ],
+      "regrowDays": null,
+      "geometry": "single_block",
+      "harvest": "grab",
+      "giant": true,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:coffee_bean_crop",
+      "class": "CoffeeBeanCropBlock",
+      "seed": "stardewcraft:coffee_bean",
+      "produce": "stardewcraft:coffee_bean",
+      "phaseDays": [
+        1,
+        2,
+        2,
+        3,
+        2
+      ],
+      "seasons": [
+        "spring",
+        "summer"
+      ],
+      "regrowDays": 2,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": "Продукция также служит семенем; несколько бобов за сбор"
+    },
+    {
+      "id": "stardewcraft:corn_crop",
+      "class": "CornCropBlock",
+      "seed": "stardewcraft:corn_seeds",
+      "produce": "stardewcraft:corn",
+      "phaseDays": [
+        2,
+        3,
+        3,
+        3,
+        3
+      ],
+      "seasons": [
+        "summer",
+        "fall"
+      ],
+      "regrowDays": 4,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:cranberry_crop",
+      "class": "CranberryCropBlock",
+      "seed": "stardewcraft:cranberry_seeds",
+      "produce": "stardewcraft:cranberry",
+      "phaseDays": [
+        1,
+        2,
+        1,
+        1,
+        2
+      ],
+      "seasons": [
+        "fall"
+      ],
+      "regrowDays": 5,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:eggplant_crop",
+      "class": "EggplantCropBlock",
+      "seed": "stardewcraft:eggplant_seeds",
+      "produce": "stardewcraft:eggplant",
+      "phaseDays": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "seasons": [
+        "fall"
+      ],
+      "regrowDays": 5,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:fairy_rose_crop",
+      "class": "FairyRoseCropBlock",
+      "seed": "stardewcraft:fairy_rose_seeds",
+      "produce": "stardewcraft:fairy_rose",
+      "phaseDays": [
+        1,
+        4,
+        4,
+        3
+      ],
+      "seasons": [
+        "fall"
+      ],
+      "regrowDays": null,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:fall_wild_seed_crop",
+      "class": "WildSeedCropBlock",
+      "seed": "stardewcraft:fall_seeds",
+      "produce": null,
+      "phaseDays": [
+        3,
+        4
+      ],
+      "seasons": [
+        "fall"
+      ],
+      "regrowDays": null,
+      "geometry": "single_block",
+      "harvest": "transforms_to_forage",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": "При созревании заменяется сезонным ForageBlock"
+    },
+    {
+      "id": "stardewcraft:fiber_crop",
+      "class": "FiberCropBlock",
+      "seed": "stardewcraft:fiber_seeds",
+      "produce": "stardewcraft:fiber",
+      "phaseDays": [
+        1,
+        2,
+        2,
+        2
+      ],
+      "seasons": [
+        "spring",
+        "summer",
+        "fall",
+        "winter"
+      ],
+      "regrowDays": null,
+      "geometry": "two_parts",
+      "harvest": "scythe",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": "Рост без полива; все сезоны; нормальное качество; особый состав дропа"
+    },
+    {
+      "id": "stardewcraft:garlic_crop",
+      "class": "GarlicCropBlock",
+      "seed": "stardewcraft:garlic_seeds",
+      "produce": "stardewcraft:garlic",
+      "phaseDays": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "seasons": [
+        "spring"
+      ],
+      "regrowDays": null,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:grape_crop",
+      "class": "GrapeCropBlock",
+      "seed": "stardewcraft:grape_seeds",
+      "produce": "stardewcraft:grape",
+      "phaseDays": [
+        1,
+        1,
+        2,
+        3,
+        3
+      ],
+      "seasons": [
+        "fall"
+      ],
+      "regrowDays": 3,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": "Шпалера; семенной аппарат возвращает летние дикие семена"
+    },
+    {
+      "id": "stardewcraft:green_bean_crop",
+      "class": "GreenBeanCropBlock",
+      "seed": "stardewcraft:green_bean_seeds",
+      "produce": "stardewcraft:green_bean",
+      "phaseDays": [
+        1,
+        1,
+        1,
+        3,
+        4
+      ],
+      "seasons": [
+        "spring"
+      ],
+      "regrowDays": 3,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:hops_crop",
+      "class": "HopsCropBlock",
+      "seed": "stardewcraft:hops_seeds",
+      "produce": "stardewcraft:hops",
+      "phaseDays": [
+        1,
+        1,
+        2,
+        3,
+        4
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "regrowDays": 1,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:hot_pepper_crop",
+      "class": "HotPepperCropBlock",
+      "seed": "stardewcraft:hot_pepper_seeds",
+      "produce": "stardewcraft:hot_pepper",
+      "phaseDays": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "regrowDays": 3,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:kale_crop",
+      "class": "KaleCropBlock",
+      "seed": "stardewcraft:kale_seeds",
+      "produce": "stardewcraft:kale",
+      "phaseDays": [
+        1,
+        2,
+        2,
+        1
+      ],
+      "seasons": [
+        "spring"
+      ],
+      "regrowDays": null,
+      "geometry": "two_parts",
+      "harvest": "scythe",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:melon_crop",
+      "class": "MelonCropBlock",
+      "seed": "stardewcraft:melon_seeds",
+      "produce": "stardewcraft:melon",
+      "phaseDays": [
+        1,
+        2,
+        3,
+        3,
+        3
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "regrowDays": null,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": true,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:parsnip_crop",
+      "class": "ParsnipCropBlock",
+      "seed": "stardewcraft:parsnip_seeds",
+      "produce": "stardewcraft:parsnip",
+      "phaseDays": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "seasons": [
+        "spring"
+      ],
+      "regrowDays": null,
+      "geometry": "single_block",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:pineapple_crop",
+      "class": "PineappleCropBlock",
+      "seed": "stardewcraft:pineapple_seeds",
+      "produce": "stardewcraft:pineapple",
+      "phaseDays": [
+        1,
+        3,
+        3,
+        4,
+        3
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "regrowDays": 7,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:poppy_crop",
+      "class": "PoppyCropBlock",
+      "seed": "stardewcraft:poppy_seeds",
+      "produce": "stardewcraft:poppy",
+      "phaseDays": [
+        1,
+        2,
+        2,
+        2
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "regrowDays": null,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:potato_crop",
+      "class": "PotatoCropBlock",
+      "seed": "stardewcraft:potato_seeds",
+      "produce": "stardewcraft:potato",
+      "phaseDays": [
+        1,
+        1,
+        1,
+        2,
+        1
+      ],
+      "seasons": [
+        "spring"
+      ],
+      "regrowDays": null,
+      "geometry": "single_block",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": "Дополнительный нативный дроп; 20% с возможностью повторения"
+    },
+    {
+      "id": "stardewcraft:powder_melon_crop",
+      "class": "PowderMelonCropBlock",
+      "seed": "stardewcraft:powder_melon_seeds",
+      "produce": "stardewcraft:powder_melon",
+      "phaseDays": [
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "seasons": [
+        "winter"
+      ],
+      "regrowDays": null,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": true,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:pumpkin_crop",
+      "class": "PumpkinCropBlock",
+      "seed": "stardewcraft:pumpkin_seeds",
+      "produce": "stardewcraft:pumpkin",
+      "phaseDays": [
+        1,
+        2,
+        3,
+        4,
+        3
+      ],
+      "seasons": [
+        "fall"
+      ],
+      "regrowDays": null,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": true,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:qi_fruit_crop",
+      "class": "QiFruitCropBlock",
+      "seed": "stardewcraft:qi_bean",
+      "produce": "stardewcraft:qi_fruit",
+      "phaseDays": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "seasons": [
+        "spring",
+        "summer",
+        "fall",
+        "winter"
+      ],
+      "regrowDays": null,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": true,
+      "soil": "native_crop_support",
+      "notes": "Нормальное качество; четыре однодневные фазы"
+    },
+    {
+      "id": "stardewcraft:radish_crop",
+      "class": "RadishCropBlock",
+      "seed": "stardewcraft:radish_seeds",
+      "produce": "stardewcraft:radish",
+      "phaseDays": [
+        2,
+        1,
+        2,
+        1
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "regrowDays": null,
+      "geometry": "single_block",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:red_cabbage_crop",
+      "class": "RedCabbageCropBlock",
+      "seed": "stardewcraft:red_cabbage_seeds",
+      "produce": "stardewcraft:red_cabbage",
+      "phaseDays": [
+        2,
+        1,
+        2,
+        2,
+        2
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "regrowDays": null,
+      "geometry": "single_block",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:rhubarb_crop",
+      "class": "RhubarbCropBlock",
+      "seed": "stardewcraft:rhubarb_seeds",
+      "produce": "stardewcraft:rhubarb",
+      "phaseDays": [
+        2,
+        2,
+        2,
+        3,
+        4
+      ],
+      "seasons": [
+        "spring"
+      ],
+      "regrowDays": null,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:rice_crop",
+      "class": "RiceCropBlock",
+      "seed": "stardewcraft:rice_shoot",
+      "produce": "stardewcraft:unmilled_rice",
+      "phaseDays": [
+        1,
+        2,
+        2,
+        3
+      ],
+      "seasons": [
+        "spring"
+      ],
+      "regrowDays": null,
+      "geometry": "two_parts",
+      "harvest": "scythe",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": "Рядом с водой (радиус 3): автополив и +25% скорости; особая геометрия"
+    },
+    {
+      "id": "stardewcraft:spring_wild_seed_crop",
+      "class": "WildSeedCropBlock",
+      "seed": "stardewcraft:spring_seeds",
+      "produce": null,
+      "phaseDays": [
+        3,
+        4
+      ],
+      "seasons": [
+        "spring"
+      ],
+      "regrowDays": null,
+      "geometry": "single_block",
+      "harvest": "transforms_to_forage",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": "При созревании заменяется сезонным ForageBlock"
+    },
+    {
+      "id": "stardewcraft:starfruit_crop",
+      "class": "StarfruitCropBlock",
+      "seed": "stardewcraft:starfruit_seeds",
+      "produce": "stardewcraft:starfruit",
+      "phaseDays": [
+        2,
+        3,
+        2,
+        3,
+        3
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "regrowDays": null,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:strawberry_crop",
+      "class": "StrawberryCropBlock",
+      "seed": "stardewcraft:strawberry_seeds",
+      "produce": "stardewcraft:strawberry",
+      "phaseDays": [
+        1,
+        1,
+        2,
+        2,
+        2
+      ],
+      "seasons": [
+        "spring"
+      ],
+      "regrowDays": 4,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:summer_spangle_crop",
+      "class": "SummerSpangleCropBlock",
+      "seed": "stardewcraft:summer_spangle_seeds",
+      "produce": "stardewcraft:summer_spangle",
+      "phaseDays": [
+        1,
+        2,
+        3,
+        2
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "regrowDays": null,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:summer_squash_crop",
+      "class": "SummerSquashCropBlock",
+      "seed": "stardewcraft:summer_squash_seeds",
+      "produce": "stardewcraft:summer_squash",
+      "phaseDays": [
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "regrowDays": 3,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:summer_wild_seed_crop",
+      "class": "WildSeedCropBlock",
+      "seed": "stardewcraft:summer_seeds",
+      "produce": null,
+      "phaseDays": [
+        3,
+        4
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "regrowDays": null,
+      "geometry": "single_block",
+      "harvest": "transforms_to_forage",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": "При созревании заменяется сезонным ForageBlock"
+    },
+    {
+      "id": "stardewcraft:sunflower_crop",
+      "class": "SunflowerCropBlock",
+      "seed": "stardewcraft:sunflower_seeds",
+      "produce": "stardewcraft:sunflower",
+      "phaseDays": [
+        1,
+        2,
+        3,
+        2
+      ],
+      "seasons": [
+        "summer",
+        "fall"
+      ],
+      "regrowDays": null,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": "Дополнительные семена при сборе"
+    },
+    {
+      "id": "stardewcraft:sweet_gem_berry_crop",
+      "class": "SweetGemBerryCropBlock",
+      "seed": "stardewcraft:rare_seed",
+      "produce": "stardewcraft:sweet_gem_berry",
+      "phaseDays": [
+        2,
+        4,
+        6,
+        6,
+        6
+      ],
+      "seasons": [
+        "fall"
+      ],
+      "regrowDays": null,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:taro_root_crop",
+      "class": "TaroRootCropBlock",
+      "seed": "stardewcraft:taro_tuber",
+      "produce": "stardewcraft:taro_root",
+      "phaseDays": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "regrowDays": null,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": "Рядом с водой: автополив и ускорение; особая геометрия"
+    },
+    {
+      "id": "stardewcraft:tomato_crop",
+      "class": "TomatoCropBlock",
+      "seed": "stardewcraft:tomato_seeds",
+      "produce": "stardewcraft:tomato",
+      "phaseDays": [
+        2,
+        2,
+        2,
+        2,
+        3
+      ],
+      "seasons": [
+        "summer"
+      ],
+      "regrowDays": 4,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:tulip_crop",
+      "class": "TulipCropBlock",
+      "seed": "stardewcraft:tulip_seeds",
+      "produce": "stardewcraft:tulip",
+      "phaseDays": [
+        1,
+        1,
+        2,
+        2
+      ],
+      "seasons": [
+        "spring"
+      ],
+      "regrowDays": null,
+      "geometry": "two_parts",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:wheat_crop",
+      "class": "WheatCropBlock",
+      "seed": "stardewcraft:wheat_seeds",
+      "produce": "stardewcraft:wheat",
+      "phaseDays": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "seasons": [
+        "summer",
+        "fall"
+      ],
+      "regrowDays": null,
+      "geometry": "two_parts",
+      "harvest": "scythe",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    },
+    {
+      "id": "stardewcraft:winter_wild_seed_crop",
+      "class": "WildSeedCropBlock",
+      "seed": "stardewcraft:winter_seeds",
+      "produce": null,
+      "phaseDays": [
+        3,
+        4
+      ],
+      "seasons": [
+        "winter"
+      ],
+      "regrowDays": null,
+      "geometry": "single_block",
+      "harvest": "transforms_to_forage",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": "При созревании заменяется сезонным ForageBlock"
+    },
+    {
+      "id": "stardewcraft:yam_crop",
+      "class": "YamCropBlock",
+      "seed": "stardewcraft:yam_seeds",
+      "produce": "stardewcraft:yam",
+      "phaseDays": [
+        1,
+        3,
+        3,
+        3
+      ],
+      "seasons": [
+        "fall"
+      ],
+      "regrowDays": null,
+      "geometry": "single_block",
+      "harvest": "grab",
+      "giant": false,
+      "soil": "native_crop_support",
+      "notes": ""
+    }
+  ]
+}

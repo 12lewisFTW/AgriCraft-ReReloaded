@@ -27,7 +27,6 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
@@ -45,6 +44,8 @@ public class AgriCraftNeoForgeClient {
 
 	@SubscribeEvent
 	public static void onClientSetup(FMLClientSetupEvent event) {
+        if (com.agricraft.agricraft.compat.starfield.StarfieldCompat.isAvailable())
+            event.enqueueWork(com.agricraft.agricraft.compat.starfield.StarfieldPlantClient::register);
 		PlatformClient.setup(new NeoForgePlatformClient());
 		AgriCraftNeoForgeClient.init();
 		ItemBlockRenderTypes.setRenderLayer(ModBlocks.SEED_ANALYZER.get(), RenderType.cutout());

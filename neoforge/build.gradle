@@ -38,6 +38,8 @@ configurations {
 	developmentNeoForge.extendsFrom common
 }
 
+apply from: 'starfield-dependency.gradle'
+
 dependencies {
 	neoForge "net.neoforged:neoforge:$neoforge_version"
 
@@ -88,5 +90,31 @@ sourcesJar {
 components.java {
 	withVariantsFromConfiguration(project.configurations.shadowRuntimeElements) {
 		skip()
+	}
+}
+
+// Iteration 0 is a separate development probe, never part of the release mod.
+// Keep these exclusions even without the profile: resource-copy tasks can retain old outputs.
+tasks.withType(AbstractArchiveTask).configureEach {
+	exclude 'com/agricraft/agricraft/starfield/prototype/**'
+	exclude 'data/agricraft/structure/starfield_probe.nbt'
+	exclude 'data/minecraft/worldgen/world_preset/flat.json'
+	exclude 'data/agricraft/starfield_probe_catalog.json'
+	exclude 'data/agricraft/agricraft/mutations/starfield_probe.json'
+    exclude 'agricraft-save-diagnostics.mixins.json'
+}
+if (providers.gradleProperty('starfieldPrototype').isPresent()) {
+	apply from: 'starfield-prototype.gradle'
+} else {
+	// Copy tasks may retain resources from an earlier opt-in run. Remove the test
+	// preset before an ordinary dev launch can load it without Starfield installed.
+	tasks.named('processResources') {
+		doFirst {
+			delete new File(destinationDir, 'data/minecraft/worldgen/world_preset/flat.json')
+			delete new File(destinationDir, 'data/agricraft/structure/starfield_probe.nbt')
+			delete new File(destinationDir, 'data/agricraft/starfield_probe_catalog.json')
+			delete new File(destinationDir, 'data/agricraft/agricraft/mutations/starfield_probe.json')
+            delete new File(destinationDir, 'agricraft-save-diagnostics.mixins.json')
+		}
 	}
 }

@@ -17,12 +17,31 @@ public class AgriCraftHarvestHandler extends HarvestHandler {
 
     @Override
     public boolean canHarvest(Level level, BlockGetter chunkCache, BlockPos pos, BlockState state, IDrone drone) {
+        var nativeCrop = com.agricraft.agricraft.api.compat.ExternalHarvestSupport.inspect(level, pos);
+        if (nativeCrop != com.agricraft.agricraft.api.compat.ExternalHarvestSupport.Availability.UNHANDLED)
+            return nativeCrop == com.agricraft.agricraft.api.compat.ExternalHarvestSupport.Availability.READY;
         return AgriApi.getCrop(level, pos).map(AgriCrop::canBeHarvested).orElse(false);
     }
 
     @Override
     public void harvest(Level level, BlockGetter chunkCache, BlockPos pos, BlockState state, IDrone drone) {
-        AgriApi.getCrop(level, pos).ifPresent(crop -> crop.harvest(drop -> this.spawnEntity(level, pos, drop), null));
+        AgriApi.harvest(level, pos, drop -> this.spawnEntity(level, pos, drop));
+    }
+
+    @Override
+    public java.util.List<ItemStack> addFilterItems(Level level, BlockGetter chunkCache, BlockPos pos, BlockState state, IDrone drone) {
+        // Native crops publish their harvest through the native runtime, rather
+        // than ordinary block-breaking loot. An empty loot table would make the
+        // drone reject them even with no programmed item filter.
+        if (level instanceof net.minecraft.server.level.ServerLevel server
+                && com.agricraft.agricraft.api.compat.ExternalHarvestSupport.inspect(level, pos)
+                != com.agricraft.agricraft.api.compat.ExternalHarvestSupport.Availability.UNHANDLED) {
+            return com.agricraft.agricraft.compat.starfield.StarfieldCompat.inspect(server, pos)
+                    .flatMap(plant -> plant.species().produce())
+                    .map(id -> java.util.List.of(new ItemStack(net.minecraft.core.registries.BuiltInRegistries.ITEM.get(id))))
+                    .orElseGet(java.util.List::of);
+        }
+        return super.addFilterItems(level, chunkCache, pos, state, drone);
     }
 
     private void spawnEntity(Level world, BlockPos pos, ItemStack stack) {

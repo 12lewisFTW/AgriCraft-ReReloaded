@@ -63,8 +63,19 @@ public class AgriCrossBreedEngine {
 	 * @return true if the cross breeding / spread succeeded, false if it failed
 	 */
 	public boolean handleCrossBreedTick(AgriCrop crop, Stream<AgriCrop> neighbours, RandomSource random) {
+		var external = com.agricraft.agricraft.api.compat.ExternalCrossBreedingSupport.breed(this, crop, random);
+		if (external.isPresent()) return external.get();
 		// select candidate parents from the neighbours
-		List<AgriCrop> candidates = this.getSelector().selectAndOrder(neighbours, random);
+		return this.breedSelected(crop, this.selectParents(neighbours, random), random);
+	}
+
+	/** Reuses the active selection logic, including configured fertility rolls. */
+	public List<AgriCrop> selectParents(Stream<AgriCrop> neighbours, RandomSource random) {
+		return this.getSelector().selectAndOrder(neighbours, random);
+	}
+
+	/** Executes the active clone/combine rules once, after selection by an optional provider. */
+	public boolean breedSelected(AgriCrop crop, List<AgriCrop> candidates, RandomSource random) {
 		// No candidates: do nothing
 		if (candidates.isEmpty()) {
 			return false;

@@ -10,9 +10,9 @@
 		"coredex-source"
 	],
 	"contact": {
-		"website": "https://www.curseforge.com/minecraft/mc-mods/agricraft",
-		"repo": "https://github.com/AgriCraft/AgriCraft",
-		"issues": "https://github.com/AgriCraft/AgriCraft/issues"
+		"website": "https://www.curseforge.com/minecraft/mc-mods/agricraft-rereloaded",
+		"repo": "https://github.com/Vivoxti/AgriCraft-ReReloaded",
+		"issues": "https://github.com/Vivoxti/AgriCraft-ReReloaded/issues"
 	},
 	"license": "MIT",
 	"icon": "logo.png",

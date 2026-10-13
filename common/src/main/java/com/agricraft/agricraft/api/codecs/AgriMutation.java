@@ -39,6 +39,16 @@ public record AgriMutation(ResourceLocation child, ResourceLocation parent1, Res
 		return getChild().isPresent() && getParent1().isPresent() && getParent2().isPresent();
 	}
 
+	/** Native species can breed without becoming virtual AgriPlant GUI ingredients. */
+	public boolean isValidForBreeding() {
+		return available(child) && available(parent1) && available(parent2);
+	}
+
+	private static boolean available(ResourceLocation species) {
+		return AgriApi.getPlant(species).isPresent()
+				|| com.agricraft.agricraft.api.compat.ExternalCrossBreedingSupport.supportsSpecies(species);
+	}
+
 	public static Builder builder() {
 		return new Builder();
 	}

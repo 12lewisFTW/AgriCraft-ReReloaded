@@ -82,23 +82,14 @@ public class SeedAnalyzerBlockEntity extends BlockEntity implements WorldlyConta
 	}
 
 	private ItemStack insertItem(int slot, ItemStack stack) {
-		ItemStack result = ItemStack.EMPTY;
-		if (this.inventory.canPlaceItem(slot, stack)) {
-			ItemStack current = this.inventory.getItem(slot);
-			if (current.isEmpty()) {
-				this.inventory.setItem(slot, stack.copy());
-			} else if (ItemStack.matches(current, stack)) {
-				int max = stack.getMaxStackSize();
-				int transfer = Math.min(stack.getCount(), max - current.getCount());
-				current.grow(transfer);
-				if (transfer < stack.getCount()) {
-					stack.shrink(transfer);
-					result = stack;
-				}
-			}
-		} else {
-			result = stack;
-		}
+		if (level == null || level.isClientSide || !canPlaceItem(slot, stack)) return stack.copy();
+		ItemStack current = this.inventory.getItem(slot);
+		if (!current.isEmpty() && !ItemStack.isSameItemSameComponents(current, stack)) return stack.copy();
+		int transfer = Math.min(stack.getCount(), Math.min(stack.getMaxStackSize(), inventory.getMaxStackSize()) - current.getCount());
+		if (transfer <= 0) return stack.copy();
+		if (current.isEmpty()) inventory.setItem(slot, stack.copyWithCount(transfer));
+		else current.grow(transfer);
+		ItemStack result = stack.copyWithCount(stack.getCount() - transfer);
 		this.setChanged();
 		this.level.sendBlockUpdated(this.getBlockPos(), this.getBlockState(), this.getBlockState(), Block.UPDATE_ALL);
 		return result;
@@ -113,8 +104,11 @@ public class SeedAnalyzerBlockEntity extends BlockEntity implements WorldlyConta
 	}
 
 	public ItemStack insertSeed(ItemStack seed) {
-		ItemStack stack = insertItem(SEED_SLOT, seed);
-		if (hasJournal() && stack.getCount() == 0) {
+		ItemStack prepared = com.agricraft.agricraft.api.compat.ExternalSeedSupport.accepts(seed, level)
+				? com.agricraft.agricraft.api.compat.ExternalSeedSupport.prepare(seed, level) : seed;
+		if (prepared.isEmpty()) return seed.copy();
+		ItemStack stack = insertItem(SEED_SLOT, prepared);
+		if (hasJournal() && stack.getCount() == 0 && seed.getItem() instanceof AgriSeedItem) {
 			JournalItem.researchPlant(this.getJournal(), ResourceLocation.parse(AgriSeedItem.getSpecies(seed)));
 		}
 		return stack;
@@ -204,7 +198,17 @@ public class SeedAnalyzerBlockEntity extends BlockEntity implements WorldlyConta
 
 	@Override
 	public boolean stillValid(Player player) {
-		return this.inventory.stillValid(player);
+		return level != null && player.level() == level && !isRemoved()
+				&& level.getBlockEntity(worldPosition) == this
+				&& com.agricraft.agricraft.api.compat.ExternalSeedSupport.mayUseAnalyzer(player, worldPosition)
+				&& player.distanceToSqr(worldPosition.getX() + 0.5, worldPosition.getY() + 0.5, worldPosition.getZ() + 0.5) < 64;
+	}
+
+	@Override public boolean canPlaceItem(int slot, ItemStack stack) {
+		if (slot == JOURNAL_SLOT) return stack.getItem() instanceof JournalItem;
+		return slot == SEED_SLOT && (stack.getItem() instanceof AgriSeedItem
+				|| com.agricraft.agricraft.api.compat.ExternalSeedSupport.accepts(stack, level)
+				|| com.agricraft.agricraft.api.AgriApi.getPlantRegistry().map(registry -> registry.stream().anyMatch(plant -> plant.isSeedItem(stack))).orElse(false));
 	}
 
 	@Override

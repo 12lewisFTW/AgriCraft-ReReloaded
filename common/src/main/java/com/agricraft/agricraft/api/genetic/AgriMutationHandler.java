@@ -87,12 +87,18 @@ public class AgriMutationHandler {
 		return complexities.getOrDefault(plant, 0);
 	}
 
+	/** Optional species/catalog reloads must not retain dominance from a previous registry. */
+	public void invalidateComplexities() {
+		complexities.clear();
+		computed = false;
+	}
+
 	protected void setupComplexities() {
 		Optional<Registry<AgriMutation>> op = AgriApi.getMutationRegistry();
 		if (op.isPresent()) {
 			Registry<AgriMutation> registry = op.get();
 			for (AgriMutation mutation : registry) {
-				if (mutation.isValid()) {
+				if (mutation.isValidForBreeding()) {
 					if (this.updateComplexity(mutation.child().toString())) {
 						this.updateComplexityForChildren(mutation.child().toString());
 					}

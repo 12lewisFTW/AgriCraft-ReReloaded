@@ -38,6 +38,14 @@ public class HarvesterMovementBehaviourMixin {
 			return;
 		}
 
+		var nativeCrop = com.agricraft.agricraft.api.compat.ExternalHarvestSupport.inspect(world, pos);
+		if (nativeCrop != com.agricraft.agricraft.api.compat.ExternalHarvestSupport.Availability.UNHANDLED) {
+			com.agricraft.agricraft.api.AgriApi.harvest(world, pos,
+					stack -> ((MovementBehaviour) (Object) this).collectOrDropItem(context, stack));
+			ci.cancel();
+			return;
+		}
+
 		if (!(world.getBlockEntity(pos) instanceof CropBlockEntity crop)) {
 			return;
 		}

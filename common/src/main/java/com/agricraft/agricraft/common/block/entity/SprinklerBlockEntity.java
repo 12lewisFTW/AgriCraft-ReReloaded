@@ -69,6 +69,8 @@ public class SprinklerBlockEntity extends BlockEntity {
 	}
 
 	protected void serverTick(Level level, BlockPos pos, BlockState state) {
+		int previousBuffer = this.waterBuffer;
+		int previousColumn = this.columnCounter;
 		this.pullWater(level, pos);
 		boolean active = false;
 		// sprinklerInterval is the minimum time between the START of two cycles, not a pause
@@ -96,6 +98,7 @@ public class SprinklerBlockEntity extends BlockEntity {
 		if (state.getValue(SprinklerBlock.ACTIVE) != active) {
 			level.setBlock(pos, state.setValue(SprinklerBlock.ACTIVE, active), Block.UPDATE_ALL);
 		}
+		if (previousBuffer != this.waterBuffer || previousColumn != this.columnCounter) this.setChanged();
 	}
 
 	protected void clientTick(Level level, BlockPos pos, BlockState state) {
@@ -131,10 +134,14 @@ public class SprinklerBlockEntity extends BlockEntity {
 			if (target.getY() < level.getMinBuildHeight()) {
 				return;
 			}
+			if (!level.hasChunkAt(target)) return;
 			BlockState state = level.getBlockState(target);
 			if (state.isAir()) {
 				continue;
 			}
+			var external = com.agricraft.agricraft.api.compat.ExternalIrrigationSupport.irrigate(level, target, state);
+			if (external == com.agricraft.agricraft.api.compat.ExternalIrrigationSupport.Result.STOP) return;
+			if (external == com.agricraft.agricraft.api.compat.ExternalIrrigationSupport.Result.CONTINUE) continue;
 			if (state.getBlock() instanceof FarmBlock) {
 				if (state.getValue(FarmBlock.MOISTURE) < FarmBlock.MAX_MOISTURE) {
 					level.setBlock(target, state.setValue(FarmBlock.MOISTURE, FarmBlock.MAX_MOISTURE), Block.UPDATE_ALL);

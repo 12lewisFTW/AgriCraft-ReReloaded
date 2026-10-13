@@ -34,6 +34,10 @@ public final class AgriCraftProbePlugin implements Function<ITheOneProbe, Void>,
 
 	@Override
 	public void addProbeInfo(ProbeMode mode, IProbeInfo info, Player player, Level level, BlockState state, IProbeHitData hit) {
+		if (com.agricraft.agricraft.compat.starfield.StarfieldCompat.isActive()
+                && player instanceof net.minecraft.server.level.ServerPlayer server)
+			com.agricraft.agricraft.compat.starfield.StarfieldInspectionSync.inspect(server, hit.getPos()).ifPresent(tag ->
+					com.agricraft.agricraft.compat.starfield.StarfieldInspection.tooltip(tag, mode != ProbeMode.NORMAL).forEach(info::text));
 		AgriApi.getCrop(level, hit.getPos()).ifPresent(crop -> addCropInfo(mode, info, crop));
 	}
 

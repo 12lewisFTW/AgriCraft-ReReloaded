@@ -10,29 +10,13 @@ import com.agricraft.agricraft.common.registry.ModMenus;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.component.CustomData;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.inventory.Slot;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.Optional;
@@ -54,7 +38,7 @@ public class SeedAnalyzerMenu extends AbstractContainerMenu {
 				super.set(agricraftSeed.isEmpty() ? stack : agricraftSeed);
 
 				// Assuming we did in fact find an AgriCraft Seed, let's add it to the journal research!!
-				if (analyzer.hasJournal() && !agricraftSeed.isEmpty()) {
+				if (analyzer.hasJournal() && agricraftSeed.getItem() instanceof AgriSeedItem) {
 					ItemStack journal = analyzer.getJournal();
 					JournalItem.researchPlant(journal, ResourceLocation.parse(AgriSeedItem.getSpecies(agricraftSeed)));
 				}
@@ -62,7 +46,7 @@ public class SeedAnalyzerMenu extends AbstractContainerMenu {
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return stack.getItem() instanceof AgriSeedItem || AgriApi.getPlantRegistry().map(registry -> registry.stream().anyMatch(plant-> plant.isSeedItem(stack))).orElse(false);
+				return analyzer.canPlaceItem(SeedAnalyzerBlockEntity.SEED_SLOT, stack);
 			}
 		});
 		this.addSlot(new Slot(this.analyzer.getInventory(), SeedAnalyzerBlockEntity.JOURNAL_SLOT, 26, 71) {
@@ -98,6 +82,7 @@ public class SeedAnalyzerMenu extends AbstractContainerMenu {
 
 	@Override
 	public ItemStack quickMoveStack(Player player, int index) {
+		if (!stillValid(player) || player.containerMenu != this || index < 0 || index >= this.slots.size()) return ItemStack.EMPTY;
 		ItemStack itemStack = ItemStack.EMPTY;
 		Slot slot = this.slots.get(index);
 		if (slot.hasItem()) {
@@ -140,16 +125,20 @@ public class SeedAnalyzerMenu extends AbstractContainerMenu {
 		if (seed.isEmpty()) {
 			return Optional.empty();
 		}
+		var external = com.agricraft.agricraft.api.compat.ExternalSeedSupport.genome(seed, analyzer.getLevel());
+		if (external.isPresent()) return external;
 		AgriGenome genome = AgriGenome.fromNBT(seed.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag());
 		return Optional.ofNullable(genome);
 	}
 
 	@Override
 	public boolean stillValid(Player player) {
-		return player.distanceToSqr(pos.getX()+0.5, pos.getY()+0.5, pos.getZ()+0.5) < 64.0F;
+		return analyzer != null && analyzer.stillValid(player);
 	}
 
 	private ItemStack getAgriCraftEquivalent(ItemStack originalStack) {
+		if (com.agricraft.agricraft.api.compat.ExternalSeedSupport.accepts(originalStack, analyzer.getLevel()))
+			return com.agricraft.agricraft.api.compat.ExternalSeedSupport.prepare(originalStack, analyzer.getLevel());
 		if (originalStack.getItem() instanceof AgriSeedItem) return originalStack;
 
 		// Attempt to find an AgriCraft seed that matches the input stack -- fallback to EMPTY if we find nothing

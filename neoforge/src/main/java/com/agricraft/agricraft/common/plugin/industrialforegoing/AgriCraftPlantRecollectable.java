@@ -19,13 +19,16 @@ public class AgriCraftPlantRecollectable extends PlantRecollectable {
 
     @Override
     public boolean canBeHarvested(Level level, BlockPos blockPos, BlockState blockState) {
+        var nativeCrop = com.agricraft.agricraft.api.compat.ExternalHarvestSupport.inspect(level, blockPos);
+        if (nativeCrop != com.agricraft.agricraft.api.compat.ExternalHarvestSupport.Availability.UNHANDLED)
+            return nativeCrop == com.agricraft.agricraft.api.compat.ExternalHarvestSupport.Availability.READY;
         return AgriApi.getCrop(level, blockPos).map(AgriCrop::canBeHarvested).orElse(false);
     }
 
     @Override
     public List<ItemStack> doHarvestOperation(Level level, BlockPos blockPos, BlockState blockState) {
         List<ItemStack> drops = new ArrayList<>();
-        AgriApi.getCrop(level, blockPos).ifPresent(crop -> crop.harvest(drops::add, null));
+        AgriApi.harvest(level, blockPos, drops::add);
         return drops;
     }
 

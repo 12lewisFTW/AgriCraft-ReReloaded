@@ -9,6 +9,11 @@ import net.minecraft.network.chat.MutableComponent;
 public class LangUtils {
 
 	public static Component plantName(String plantId) {
+		var nativeId = net.minecraft.resources.ResourceLocation.tryParse(plantId);
+		if (nativeId != null && nativeId.getNamespace().equals("stardewcraft")) {
+			var block = net.minecraft.core.registries.BuiltInRegistries.BLOCK.get(nativeId);
+			if (block != net.minecraft.world.level.block.Blocks.AIR) return block.getName();
+		}
 		return Component.translatable("plant.agricraft." + plantId.replace(":", ".").replace("/", "."));
 	}
 

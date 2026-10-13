@@ -76,3 +76,10 @@ components.java {
 	}
 }
 
+tasks.withType(AbstractArchiveTask).configureEach {
+	exclude 'com/agricraft/agricraft/starfield/prototype/**'
+}
+if (providers.gradleProperty('starfieldFabricSmoke').isPresent()) {
+	apply from: 'starfield-smoke.gradle'
+}
+

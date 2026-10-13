@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.agricraft.agricraft.compat.starfield.mixin",
+  "plugin": "com.agricraft.agricraft.compat.starfield.mixin.StarfieldMixinPlugin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": ["SeedUseMixin", "NativeCropLifecycleMixin", "NativeGrowthRestoreMixin", "NativeCropHarvestMixin", "NativeProductionMixin", "HarvestEntityMixin", "NativeCropGeneMixin", "NativeGiantSeasonMixin", "NativeGiantLifecycleMixin", "NativeWildFormMixin", "NativeForageMixin"],
+  "injectors": {"defaultRequire": 1}
+}

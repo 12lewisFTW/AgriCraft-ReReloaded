@@ -1,24 +1,11 @@
 {
-  "homepage": "https://www.curseforge.com/minecraft/mc-mods/agricraft",
+  "homepage": "https://github.com/Vivoxti/AgriCraft-ReReloaded/releases",
   "promos": {
-    "1.20.1-latest": "1.20.1-4.0.6",
-    "1.20.1-recommended": "1.20.1-4.0.6",
-    "1.18.2-latest": "1.18.2-3.1.6",
-    "1.18.2-recommended": "1.18.2-3.1.6"
+    "1.21.1-latest": "4.0.20",
+    "1.21.1-recommended": "4.0.20"
   },
-  "1.20.1": {
-    "1.20.1-4.0.6": "Seed CHANGELOG.md",
-    "1.20.1-4.0.5": "Seed CHANGELOG.md",
-    "1.20.1-4.0.4": "Seed CHANGELOG.md",
-    "1.20.1-4.0.3": "Seed CHANGELOG.md"
-  },
-  "1.18.2": {
-    "1.18.2-3.1.6": "See changelog.txt",
-    "1.18.2-3.1.5": "See changelog.txt",
-    "1.18.2-3.1.4": "See changelog.txt",
-    "1.18.2-3.1.3": "See changelog.txt",
-    "1.18.2-3.1.2": "See changelog.txt",
-    "1.18.2-3.1.1": "See changelog.txt",
-    "1.18.2-3.1.0": "1.18.2 version of AgriCraft"
+  "1.21.1": {
+    "4.0.20": "Starfield Pastoral 0.6.3fix1 compatibility, native crop genetics, irrigation, breeding and harvesting. See CHANGELOG.md.",
+    "4.0.19": "Croptopia and The One Probe compatibility."
   }
 }

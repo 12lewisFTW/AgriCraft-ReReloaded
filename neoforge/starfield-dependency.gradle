@@ -1,0 +1,42 @@
+import java.security.MessageDigest
+
+// The official JAR is used only for compilation in ordinary builds, never bundled or run.
+def lockFile = rootProject.file('tests/starfield/dependencies.json')
+def lock = new groovy.json.JsonSlurper().parse(lockFile).starfield
+def dependencyJar = rootProject.file("build/starfield-iteration0/dependencies/${lock.file}")
+def verifyJar = { File file ->
+	if (!file.isFile() || file.length() != lock.size) return false
+	def digest = MessageDigest.getInstance('SHA-256')
+	file.withInputStream { input ->
+		byte[] buffer = new byte[65536]
+		int count
+		while ((count = input.read(buffer)) != -1) digest.update(buffer, 0, count)
+	}
+	digest.digest().encodeHex().toString() == lock.sha256
+}
+def prepareDependency = tasks.register('prepareStarfieldCompileDependency') {
+	inputs.file lockFile
+	outputs.file dependencyJar
+	outputs.upToDateWhen { verifyJar(dependencyJar) }
+	doLast {
+		if (dependencyJar.exists()) {
+			if (!verifyJar(dependencyJar)) throw new GradleException('Official Starfield compile dependency failed SHA-256 verification')
+			return
+		}
+		if (gradle.startParameter.offline) throw new GradleException('Starfield compile dependency is not cached; run python tests/starfield/prepare.py once online')
+		dependencyJar.parentFile.mkdirs()
+		def partial = new File(dependencyJar.parentFile, "${lock.file}.part")
+		def connection = new URI(lock.url).toURL().openConnection()
+		connection.setRequestProperty('User-Agent', 'AgriCraft-Starfield-compile')
+		connection.connectTimeout = 30000
+		connection.readTimeout = 120000
+		connection.inputStream.withCloseable { input -> partial.withOutputStream { output -> output << input } }
+		if (!verifyJar(partial)) throw new GradleException('Downloaded official Starfield dependency failed size/SHA-256 verification')
+		java.nio.file.Files.move(partial.toPath(), dependencyJar.toPath())
+	}
+}
+dependencies {
+	compileOnly files(dependencyJar).builtBy(prepareDependency)
+}
+// Loom materializes the compile classpath independently of JavaCompile.
+tasks.matching { it.name == 'generateRemapClasspath' }.configureEach { dependsOn prepareDependency }

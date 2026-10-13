@@ -186,6 +186,14 @@ public final class AgriApi {
 		return Optional.empty();
 	}
 
+	/** Automation entry point; native crops execute their own validated harvest operation. */
+	public static boolean harvest(Level level, BlockPos pos, java.util.function.Consumer<ItemStack> output) {
+		var result = com.agricraft.agricraft.api.compat.ExternalHarvestSupport.harvest(level, pos, output);
+		if (result != com.agricraft.agricraft.api.compat.ExternalHarvestSupport.Result.UNHANDLED)
+			return result == com.agricraft.agricraft.api.compat.ExternalHarvestSupport.Result.HARVESTED;
+		return getCrop(level, pos).map(crop -> crop.harvest(output, null)).orElse(false);
+	}
+
 	public static AgriGrowthConditionRegistry getGrowthConditionRegistry() {
 		return AgriGrowthConditionRegistry.getInstance();
 	}

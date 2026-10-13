@@ -17,6 +17,7 @@ import com.agricraft.agricraft.common.greenhouse.Greenhouses;
 import com.agricraft.agricraft.common.neoforge.IrrigationTankFluidHandler;
 import com.agricraft.agricraft.common.plugin.MysticalAgricultureCompat;
 import com.agricraft.agricraft.compat.theoneprobe.AgriCraftProbePlugin;
+import com.agricraft.agricraft.compat.starfield.StarfieldCompat;
 import com.agricraft.agricraft.common.neoforge.registry.NeoForgeGlobalLootModifiers;
 import com.agricraft.agricraft.common.registry.ModBlockEntityTypes;
 import net.neoforged.neoforge.capabilities.Capabilities;
@@ -57,6 +58,7 @@ public class AgriCraftNeoForge {
 		NeoForgeRegistry.setModBus(bus);
 		Platform.setup(new NeoForgePlatform());
 		AgriCraft.init();
+        StarfieldCompat.register(bus);
 		NeoForgeGlobalLootModifiers.register(bus);
 		bus.addListener(AgriCraftNeoForge::onCommonSetup);
 		bus.addListener(AgriCraftNeoForge::onInterModEnqueue);

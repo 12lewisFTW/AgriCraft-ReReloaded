@@ -68,6 +68,8 @@ public class SeedAnalyzerBlock extends Block implements EntityBlock {
 		if (!(blockEntity instanceof SeedAnalyzerBlockEntity analyzer)) {
 			return InteractionResult.FAIL;
 		}
+		if (level.isClientSide) return InteractionResult.CONSUME;
+		if (!analyzer.stillValid(player) || !player.mayBuild() || !level.mayInteract(player, pos)) return InteractionResult.FAIL;
 		if (player.isShiftKeyDown()) {
 			// extract seeds
 			if (analyzer.hasSeed()) {
@@ -100,6 +102,8 @@ public class SeedAnalyzerBlock extends Block implements EntityBlock {
 		if (!(blockEntity instanceof SeedAnalyzerBlockEntity analyzer)) {
 			return ItemInteractionResult.FAIL;
 		}
+		if (level.isClientSide) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+		if (!analyzer.stillValid(player) || !player.mayBuild() || !level.mayInteract(player, pos)) return ItemInteractionResult.FAIL;
 		if (player.isShiftKeyDown()) {
 			if (analyzer.hasSeed()) {
 				ItemStack seed = analyzer.extractSeed();

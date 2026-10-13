@@ -1,0 +1,24 @@
+{
+  "minecraft": "1.21.1",
+  "java": 21,
+  "neoforge": "21.1.226",
+  "agricraft": "4.0.20",
+  "resourcefulconfig": "3.0.11",
+  "starfield": {
+    "version": "0.6.3fix1",
+    "tag": "v0.6.3fix1",
+    "commit": "df2151c66a2a9c02855e4db23108e57c422ce78e",
+    "repository": "https://github.com/ChangQingElysium/Starfield-Pastoral",
+    "file": "stardewcraft-0.6.3fix1-mc1.21.1-neoforge.jar",
+    "url": "https://github.com/ChangQingElysium/Starfield-Pastoral/releases/download/v0.6.3fix1/stardewcraft-0.6.3fix1-mc1.21.1-neoforge.jar",
+    "sha256": "87a67827417f4a87abb7a80f0581003e79d3a2cb5d45e19250777162f4bd3758",
+    "size": 239668522
+  },
+  "unverified_starfield": {
+    "version": "0.6.3",
+    "file": "stardewcraft-0.6.3-mc1.21.1-neoforge.jar",
+    "url": "https://github.com/ChangQingElysium/Starfield-Pastoral/releases/download/v0.6.3/stardewcraft-0.6.3-mc1.21.1-neoforge.jar",
+    "sha256": "684763ead764e45b57a7b16f97ceba80253de6b5107e932a41f4d526de036823",
+    "bytes": 231053249
+  }
+}

@@ -1,0 +1,28 @@
+import java.util.zip.ZipEntry
+import java.util.zip.ZipOutputStream
+
+// A tiny development-only mod descriptor registers a test class from this project's
+// development classpath. No test entrypoint is added to AgriCraft's release manifest.
+def markerJar = rootProject.file('build/starfield-iteration0/fabric-loading-test-marker.jar')
+markerJar.parentFile.mkdirs()
+def descriptor = [schemaVersion: 1, id: 'agricraft_starfield_loading_test', version: '1',
+	name: 'AgriCraft Fabric loading test', environment: '*',
+	entrypoints: ['fabric-gametest': ['com.agricraft.agricraft.starfield.prototype.FabricLoadingGameTests']],
+	depends: [agricraft: '*', 'fabric-gametest-api-v1': '*']]
+new ZipOutputStream(new FileOutputStream(markerJar)).withCloseable { zip ->
+	zip.putNextEntry(new ZipEntry('fabric.mod.json'))
+	zip.write(groovy.json.JsonOutput.toJson(descriptor).getBytes('UTF-8'))
+	zip.closeEntry()
+}
+dependencies { modLocalRuntime files(markerJar) }
+sourceSets.main.java.srcDir rootProject.file('tests/starfield/fabric-java')
+loom {
+	runs {
+		starfieldLoading {
+			server()
+			runDir 'build/starfield-loading-test-run'
+			vmArg '-Dfabric-api.gametest=true'
+			vmArg "-Dfabric-api.gametest.report-file=${rootProject.file('build/starfield-iteration0/fabric-loading-tests.xml')}"
+		}
+	}
+}

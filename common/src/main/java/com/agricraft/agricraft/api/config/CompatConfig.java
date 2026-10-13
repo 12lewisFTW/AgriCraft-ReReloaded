@@ -13,6 +13,11 @@ import com.teamresourceful.resourcefulconfig.api.types.options.EntryType;
 public final class CompatConfig {
 
 	public static final String MYSTICAL_AGRICULTURE_MOD_ID = "mysticalagriculture";
+	public static final String STARFIELD_MOD_ID = "stardewcraft";
+
+	@ConfigEntry(id = "starfield", type = EntryType.BOOLEAN, translation = "config.agricraft.compat.starfield")
+	@Comment("Enable Starfield Pastoral compatibility on NeoForge. Only verified versions are supported; restart after changing this option.")
+	public static boolean enableStarfield = true;
 
 	@ConfigEntry(id = "mysticalagriculture", type = EntryType.BOOLEAN, translation = "config.agricraft.compat.mysticalagriculture")
 	@Comment("Set to false to disable compatibility with Mystical Agriculture (in case things break)")
@@ -33,7 +38,11 @@ public final class CompatConfig {
 	 * @return {@code false} when the matching compatibility option is disabled
 	 */
 	public static boolean isCompatibilityEnabled(String modId) {
-		return !MYSTICAL_AGRICULTURE_MOD_ID.equals(modId) || enableMysticalAgriculture;
+		return switch (modId) {
+			case MYSTICAL_AGRICULTURE_MOD_ID -> enableMysticalAgriculture;
+			case STARFIELD_MOD_ID -> enableStarfield;
+			default -> true;
+		};
 	}
 
 }

@@ -1,14 +1,14 @@
 modLoader="javafml"
 loaderVersion="[2,)"
 license="MIT"
-issueTrackerURL="https://github.com/AgriCraft/AgriCraft/issues/"
+issueTrackerURL="https://github.com/Vivoxti/AgriCraft-ReReloaded/issues"
 
 [[mods]]
 modId="agricraft"
 version="${version}"
 displayName="AgriCraft"
-displayURL="https://www.curseforge.com/minecraft/mc-mods/agricraft"
-updateJSONURL = "https://raw.githubusercontent.com/AgriCraft/AgriCraft/master/version.json"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/agricraft-rereloaded"
+updateJSONURL = "https://raw.githubusercontent.com/Vivoxti/AgriCraft-ReReloaded/1.21.1/version.json"
 logoFile="logo.png"
 authors="InfinityRaider, Ketheroth, coredex-source"
 description='''
@@ -44,9 +44,21 @@ config = "agricraft-common.mixins.json"
 [[mixins]]
 config = "agricraft-neoforge.mixins.json"
 
+[[mixins]]
+config = "agricraft-starfield.mixins.json"
+
 [[dependencies.agricraft]]
 modId="create"
 type="optional"
 versionRange="[6.0.0,6.1.0)"
+ordering="AFTER"
+side="BOTH"
+
+# The compatibility loader validates supported versions without preventing AgriCraft
+# from starting alongside an older/newer Starfield with the integration disabled.
+[[dependencies.agricraft]]
+modId="stardewcraft"
+type="optional"
+versionRange="[0,)"
 ordering="AFTER"
 side="BOTH"

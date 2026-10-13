@@ -412,6 +412,8 @@ public class CropBlock extends Block implements EntityBlock, BonemealableBlock, 
 
 	@Override
 	public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+		if (state.getValue(CROP_STATE).hasSticks()
+				&& com.agricraft.agricraft.api.compat.ExternalCrossBreedingSupport.supportsSticks(level, pos)) return true;
 		if (AgriApi.getSoil(level, pos.below(), level.registryAccess()).isPresent()) {
 			return true;
 		}

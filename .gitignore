@@ -7,3 +7,8 @@ out/
 forge/src/generated/
 neoforge/src/generated/
 .architectury-transformer/
+
+# Local build/runtime diagnostics and Python caches
+*.log
+__pycache__/
+*.py[cod]
