@@ -18,7 +18,7 @@ On NeoForge, The One Probe displays growth percentages for all AgriCraft plants,
 
 Optional **Starfield Pastoral 0.6.3fix1** compatibility is available on NeoForge from **4.0.20**. All 50 supported native seed types retain Starfield's daily calendar, models, seasons, water and quality rules while using AgriCraft's six genes, crop sticks, breeding, analyzer, trowel and irrigation. Native produce passes its genome through the seed maker; Create, Industrial Foregoing and PneumaticCraft can harvest supported ordinary native crops. The integration activates only for the verified Starfield version with `compat.starfield` enabled. Starfield is not bundled and this integration is not available on Fabric.
 
-See the [Russian user guide](docs/starfield/USER-GUIDE-RU.md) for setup and gameplay, [release notes](docs/releases/4.0.20.md) for supported features and limits, and [acceptance report](docs/starfield/ACCEPTANCE-RU.md) for verification.
+See the [user guide](docs/starfield/USER-GUIDE.md) for setup and gameplay, [release notes](docs/releases/4.0.20.md) for supported features and limits, and [acceptance report](docs/starfield/ACCEPTANCE.md) for verification.
 
 For source builds, generate the compatibility data with `gradlew :neoforge:runData` before running `gradlew build`. To check the Croptopia packs against an installed Croptopia 4.x jar, run `python tests/verify_croptopia_pack.py <Croptopia.jar> <AgriCraft-neoforge.jar> <AgriCraft-fabric.jar>`.
 

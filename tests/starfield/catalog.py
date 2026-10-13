@@ -16,15 +16,15 @@ JAVA = WORK / "upstream/src/main/java/com/stardew/craft"
 SEASONS = ["spring", "summer", "fall", "winter"]
 GIANTS = {"cauliflower", "melon", "pumpkin", "powder_melon", "qi_fruit"}
 NOTES = {
-    "potato": "Дополнительный нативный дроп; 20% с возможностью повторения",
-    "rice": "Рядом с водой (радиус 3): автополив и +25% скорости; особая геометрия",
-    "taro_root": "Рядом с водой: автополив и ускорение; особая геометрия",
-    "fiber": "Рост без полива; все сезоны; нормальное качество; особый состав дропа",
-    "cactus_fruit": "Все сезоны; посадка только в помещении/теплице или на острове",
-    "qi_fruit": "Нормальное качество; четыре однодневные фазы",
-    "sunflower": "Дополнительные семена при сборе",
-    "coffee_bean": "Продукция также служит семенем; несколько бобов за сбор",
-    "grape": "Шпалера; семенной аппарат возвращает летние дикие семена",
+    "potato": "Additional native drops; 20% chance with repeat rolls",
+    "rice": "Near water (radius 3): automatic watering and +25% growth speed; special geometry",
+    "taro_root": "Near water: automatic watering and faster growth; special geometry",
+    "fiber": "Grows without watering; all seasons; normal quality; special drop composition",
+    "cactus_fruit": "All seasons; planting only indoors/in a greenhouse or on the island",
+    "qi_fruit": "Normal quality; four one-day phases",
+    "sunflower": "Additional seeds on harvest",
+    "coffee_bean": "Produce also serves as seed; multiple beans per harvest",
+    "grape": "Trellis; the seed maker returns summer wild seeds",
 }
 
 
@@ -130,7 +130,7 @@ def extract():
                 ancestor = parent
             tall = any("DoubleBlockHalf" in source for source in chain)
             short = block.removesuffix("_crop")
-            notes = "При созревании заменяется сезонным ForageBlock" if wild else NOTES.get(short, "")
+            notes = "Replaced by a seasonal ForageBlock at maturity" if wild else NOTES.get(short, "")
             entry = {
                 "id": "stardewcraft:" + block,
                 "class": name,
@@ -163,27 +163,27 @@ def write_catalog(crops):
     destination.mkdir(parents=True, exist_ok=True)
     output = {"schemaVersion": 1, "sourceCommit": COMMIT, "release": STARFIELD["version"], "crops": crops}
     (destination / "crop-catalog.json").write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    lines = ["# Каталог Starfield: итерация 0", "",
-             f"Сборка `{STARFIELD['version']}`, commit `{COMMIT}`. 46 культур и 4 вида диких семян.", "",
-             "Это инвентаризация для проектирования, а не список уже работающих интеграций.", "",
-             "Все ID ниже имеют namespace `stardewcraft`. Базовая почва: только нативные",
-             "`farmland`, `sandy_farmland`, `infertile_farmland` или `garden_pot`, с дополнительными",
-             "ограничениями конкретного вида. `phaseDays` не включает служебный harvest sentinel.", "",
-             "| Вид | Семя | Продукция | phaseDays | Сезоны | Повтор, дни | Геометрия | Сбор | Гигант | Особенности |",
+    lines = ["# Starfield crop catalog: iteration 0", "",
+             f"Release `{STARFIELD['version']}`, commit `{COMMIT}`. 46 crops and 4 wild-seed species.", "",
+             "This is a design inventory, not a list of already implemented integrations.", "",
+             "All IDs below use the `stardewcraft` namespace. Base soils: native",
+             "`farmland`, `sandy_farmland`, `infertile_farmland` or `garden_pot`, with additional",
+             "species-specific restrictions. `phaseDays` excludes the internal harvest sentinel.", "",
+             "| Species | Seed | Produce | phaseDays | Seasons | Regrow, days | Geometry | Harvest | Giant | Notes |",
              "|---|---|---|---|---|---|---|---|---|---|"]
     for crop in crops:
-        path = lambda value: value.split(":")[1] if value else "сезонный forage"
+        path = lambda value: value.split(":")[1] if value else "seasonal forage"
         lines.append("| " + " | ".join([
             path(crop["id"]), path(crop["seed"]), path(crop["produce"]),
             ",".join(map(str, crop["phaseDays"])), ", ".join(crop["seasons"]),
             str(crop["regrowDays"]) if crop["regrowDays"] is not None else "—",
-            "2 части" if crop["geometry"] == "two_parts" else "1 блок", crop["harvest"],
-            "да" if crop["giant"] else "—", crop["notes"] or "—"]) + " |")
-    lines += ["", "Источник: официальные регистрации и наследуемые методы crop-классов;",
-              "ID/классы/модели сверены с JAR из `tests/starfield/dependencies.json`.",
-              "Воспроизведение: `python tests/starfield/catalog.py`. Генератор намеренно прекращает",
-              "работу при неизвестной форме исходников, чтобы не подменять данные догадкой.", ""]
-    (destination / "CROP-CATALOG-RU.md").write_text("\n".join(lines), encoding="utf-8")
+            "2 parts" if crop["geometry"] == "two_parts" else "1 block", crop["harvest"],
+            "yes" if crop["giant"] else "—", crop["notes"] or "—"]) + " |")
+    lines += ["", "Source: official registrations and inherited crop-class methods;",
+              "IDs/classes/models are validated against the JAR pinned in `tests/starfield/dependencies.json`.",
+              "Reproduce with `python tests/starfield/catalog.py`. The generator deliberately stops",
+              "on unsupported source shapes instead of substituting guesses for data.", ""]
+    (destination / "CROP-CATALOG.md").write_text("\n".join(lines), encoding="utf-8")
 
 
 if __name__ == "__main__":

@@ -10,7 +10,7 @@ hand/scythe output. Iterations 9–10 add strength/resistance and native multipa
 crops, including wild-seed forage transitions. Iteration 11 completes native giant
 formation with transactional stick restitution. Gameplay stick placement/rendering, seed-maker lineage, machine harvesting and
 release acceptance are implemented in the current working tree. Current results
-and limits are recorded in `docs/starfield/ACCEPTANCE-RU.md`. Iteration 14 was canceled.
+and limits are recorded in `docs/starfield/ACCEPTANCE.md`. Iteration 14 was canceled.
 Use Java 21 and Python 3.11+ (standard library only), from the repository root:
 
 ```powershell
@@ -87,7 +87,7 @@ diagnostics without resetting the existing plant's phase or processed date. Disa
 NeoForge and a real Fabric headless server verify safe loading. A descriptor-only development
 JAR registers the Fabric test; no test entrypoint is added to the release manifest.
 
-See [`ITERATION-1-RU.md`](../../docs/starfield/ITERATION-1-RU.md) for the runtime boundaries.
+See [`ITERATION-1.md`](../../docs/starfield/ITERATION-1.md) for the runtime boundaries.
 
 Iteration 2 production persistence/lifecycle tests (13 tests per enabled launch):
 
@@ -102,10 +102,10 @@ identity, native removal/replant/rollback, trowel transfer with placement cancel
 the client cache/network codec. The restart pair uses the production SavedData and real world
 files in the enabled scratch world; its separate expected-value witness never restores data.
 The native phase/day executor is neither replaced nor copied. See
-[`ITERATION-2-RU.md`](../../docs/starfield/ITERATION-2-RU.md) for supported transfers and remaining limits.
+[`ITERATION-2.md`](../../docs/starfield/ITERATION-2.md) for supported transfers and remaining limits.
 
 Find the completed architecture result in
-[`ITERATION-0-SPEC-RU.md`](../../docs/starfield/ITERATION-0-SPEC-RU.md).
+[`ITERATION-0-SPEC.md`](../../docs/starfield/ITERATION-0-SPEC.md).
 
 Iteration 3 paired daily-growth tests:
 
@@ -125,7 +125,7 @@ The restart pair runs 20 (13 without genetics): its generator excludes the globa
 test, which would legitimately advance another test's checkpoint before shutdown. The first,
 separate launch covers that real global pass. Restart tests without a phase are no-ops and
 must not be cited as persistence evidence. Daily and genotype restart witnesses are separate.
-See [`ITERATION-3-RU.md`](../../docs/starfield/ITERATION-3-RU.md) for boundaries and reproduction.
+See [`ITERATION-3.md`](../../docs/starfield/ITERATION-3.md) for boundaries and reproduction.
 
 Iteration 4 native player-harvest tests (29 tests with the previous profiles):
 
@@ -139,7 +139,7 @@ native scythe swings, farm permissions, Agri tool fallback, full inventory, canc
 and throwing item joins (including a partially published harvest), and reentrant
 event listeners. Test observers capture actual item joins on remote native farms,
 whose chunks may not yet be included in ordinary entity lookup. The control must
-produce a nonempty output. See [`ITERATION-4-RU.md`](../../docs/starfield/ITERATION-4-RU.md)
+produce a nonempty output. See [`ITERATION-4.md`](../../docs/starfield/ITERATION-4.md)
 for the transaction boundary and unsupported destructive/automation paths.
 
 Iteration 5 analyzer and tool-inspection tests (38 tests with the previous profiles):
@@ -169,7 +169,7 @@ a restart phase and must not count as new restart evidence.
 Use the disabled/absent/Fabric launches above and ordinary builds to verify isolation.
 The release verifier also checks archives produced while the test profile is enabled.
 Graphical client layout and a complete TOP client session were not manually tested.
-See [`ITERATION-5-RU.md`](../../docs/starfield/ITERATION-5-RU.md) for precise behavior,
+See [`ITERATION-5.md`](../../docs/starfield/ITERATION-5.md) for precise behavior,
 limitations and reproduction. At that milestone gameplay sticks, irrigation,
 breeding and gene effects above the baseline were still pending.
 
@@ -196,7 +196,7 @@ buffer, paid sweeps, vanilla farmland moisture and continued vanilla wheat growt
 It does not link native NeoForge classes. Run the disabled/absent/Fabric profiles
 and ordinary builds above, then verify archive isolation as in earlier iterations.
 Buffer persistence is an actual block-entity NBT restore with chunk dirty checking,
-not a new two-JVM restart test. See [`ITERATION-6-RU.md`](../../docs/starfield/ITERATION-6-RU.md)
+not a new two-JVM restart test. See [`ITERATION-6.md`](../../docs/starfield/ITERATION-6.md)
 for reproduction and limits. Gameplay stick rendering/placement, breeding, genetic
 bonuses and giant-form irrigation are not completed by this milestone.
 
@@ -221,7 +221,7 @@ archive even after the profile runs. Native species participate in ordinary muta
 validity/complexity without registering virtual plants. No mutation recipe is shipped.
 Run the disabled/absent/Fabric profiles and ordinary builds, then verify isolation.
 SavedData recovery is an NBT round-trip, not a new two-process restart.
-See [`ITERATION-7-RU.md`](../../docs/starfield/ITERATION-7-RU.md) for exact scope and limits.
+See [`ITERATION-7.md`](../../docs/starfield/ITERATION-7.md) for exact scope and limits.
 
 Iteration 8 growth/gain checks use the same combined command above (66 tests). Nine additional
 scenarios in the daily/harvest sources exercise documented formulas and custom bounds,
@@ -249,7 +249,7 @@ and the next regrow day must subtract exactly one from the saved genetic countdo
 `iteration8-restart-witness.nbt` is a comparison witness only. Without a restart phase
 that checkpoint is a no-op; ordinary passing test totals do not prove a restart.
 Run disabled/absent/Fabric loading and verify normal/profile archive isolation as above.
-See [`ITERATION-8-RU.md`](../../docs/starfield/ITERATION-8-RU.md) for balance and remaining limits.
+See [`ITERATION-8.md`](../../docs/starfield/ITERATION-8.md) for balance and remaining limits.
 
 Iteration 11 giant tests (104 tests with all previous profiles):
 
@@ -279,7 +279,7 @@ nine consumed sidecars/scheduler roots, then harvests the saved giant once. The
 iteration11-restart-witness.nbt file is only a comparison witness; it never recreates
 world state. With no restart phase this checkpoint is a no-op. Re-run disabled/absent/
 Fabric loading and verify both profile-built and ordinary release archives. See
-[`ITERATION-11-RU.md`](../../docs/starfield/ITERATION-11-RU.md) for exact scope and limits.
+[`ITERATION-11.md`](../../docs/starfield/ITERATION-11.md) for exact scope and limits.
 
 
 ## Iteration 12 — hereditary production and automation
@@ -325,7 +325,7 @@ loads the existing native block entity, checks these fields, extracts seeds
 once and replants them. The witness never creates the machine or its inventory.
 Internal failures before delivery roll back the native crop; arbitrary throwing
 consumer sinks retain the committed crop and are not retryable. See
-[`ITERATION-12-RU.md`](../../docs/starfield/ITERATION-12-RU.md) for limits and results.
+[`ITERATION-12.md`](../../docs/starfield/ITERATION-12.md) for limits and results.
 
 
 ## Iteration 13 — release regression and migration
@@ -360,7 +360,7 @@ whole-world calendar suites. Catalog/reload probes are deliberately excluded fro
 these migration JVMs and are covered by the ordinary complete enabled profile. All prototype classes/resources remain excluded from JARs.
 
 Archive verification also rejects native `assets/stardewcraft` and `data/stardewcraft`
-namespaces. See [the user guide](../../docs/starfield/USER-GUIDE-RU.md) for actual
+namespaces. See [the user guide](../../docs/starfield/USER-GUIDE.md) for actual
 release limitations and completed stick presentation and graphical client QA.
 
 
@@ -439,7 +439,7 @@ manifest. Observation begins at the entry of MinecraftServer.stopServer, before
 other mods' ServerStopping handlers. The observers log generation origins, holder reference
 counts/save-future state, and periodic samples if saving stalls. They never load
 chunks or change readiness/unload behavior. Diagnostics and marker resources are
-excluded from archives. See [investigation and limits](../../docs/starfield/SAVE-HANG-INVESTIGATION-RU.md).
+excluded from archives. See [investigation and limits](../../docs/starfield/SAVE-HANG-INVESTIGATION.md).
 
 `standalone.py` installs an ordinary release JAR and the original dependencies into
 an independently installed NeoForge 21.1.226 server under ignored

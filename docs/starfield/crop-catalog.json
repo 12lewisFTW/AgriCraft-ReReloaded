@@ -199,7 +199,7 @@
       "harvest": "grab",
       "giant": false,
       "soil": "native_crop_support",
-      "notes": "Все сезоны; посадка только в помещении/теплице или на острове"
+      "notes": "All seasons; planting only indoors/in a greenhouse or on the island"
     },
     {
       "id": "stardewcraft:carrot_crop",
@@ -264,7 +264,7 @@
       "harvest": "grab",
       "giant": false,
       "soil": "native_crop_support",
-      "notes": "Продукция также служит семенем; несколько бобов за сбор"
+      "notes": "Produce also serves as seed; multiple beans per harvest"
     },
     {
       "id": "stardewcraft:corn_crop",
@@ -371,7 +371,7 @@
       "harvest": "transforms_to_forage",
       "giant": false,
       "soil": "native_crop_support",
-      "notes": "При созревании заменяется сезонным ForageBlock"
+      "notes": "Replaced by a seasonal ForageBlock at maturity"
     },
     {
       "id": "stardewcraft:fiber_crop",
@@ -395,7 +395,7 @@
       "harvest": "scythe",
       "giant": false,
       "soil": "native_crop_support",
-      "notes": "Рост без полива; все сезоны; нормальное качество; особый состав дропа"
+      "notes": "Grows without watering; all seasons; normal quality; special drop composition"
     },
     {
       "id": "stardewcraft:garlic_crop",
@@ -438,7 +438,7 @@
       "harvest": "grab",
       "giant": false,
       "soil": "native_crop_support",
-      "notes": "Шпалера; семенной аппарат возвращает летние дикие семена"
+      "notes": "Trellis; the seed maker returns summer wild seeds"
     },
     {
       "id": "stardewcraft:green_bean_crop",
@@ -633,7 +633,7 @@
       "harvest": "grab",
       "giant": false,
       "soil": "native_crop_support",
-      "notes": "Дополнительный нативный дроп; 20% с возможностью повторения"
+      "notes": "Additional native drops; 20% chance with repeat rolls"
     },
     {
       "id": "stardewcraft:powder_melon_crop",
@@ -701,7 +701,7 @@
       "harvest": "grab",
       "giant": true,
       "soil": "native_crop_support",
-      "notes": "Нормальное качество; четыре однодневные фазы"
+      "notes": "Normal quality; four one-day phases"
     },
     {
       "id": "stardewcraft:radish_crop",
@@ -787,7 +787,7 @@
       "harvest": "scythe",
       "giant": false,
       "soil": "native_crop_support",
-      "notes": "Рядом с водой (радиус 3): автополив и +25% скорости; особая геометрия"
+      "notes": "Near water (radius 3): automatic watering and +25% growth speed; special geometry"
     },
     {
       "id": "stardewcraft:spring_wild_seed_crop",
@@ -806,7 +806,7 @@
       "harvest": "transforms_to_forage",
       "giant": false,
       "soil": "native_crop_support",
-      "notes": "При созревании заменяется сезонным ForageBlock"
+      "notes": "Replaced by a seasonal ForageBlock at maturity"
     },
     {
       "id": "stardewcraft:starfruit_crop",
@@ -912,7 +912,7 @@
       "harvest": "transforms_to_forage",
       "giant": false,
       "soil": "native_crop_support",
-      "notes": "При созревании заменяется сезонным ForageBlock"
+      "notes": "Replaced by a seasonal ForageBlock at maturity"
     },
     {
       "id": "stardewcraft:sunflower_crop",
@@ -934,7 +934,7 @@
       "harvest": "grab",
       "giant": false,
       "soil": "native_crop_support",
-      "notes": "Дополнительные семена при сборе"
+      "notes": "Additional seeds on harvest"
     },
     {
       "id": "stardewcraft:sweet_gem_berry_crop",
@@ -977,7 +977,7 @@
       "harvest": "grab",
       "giant": false,
       "soil": "native_crop_support",
-      "notes": "Рядом с водой: автополив и ускорение; особая геометрия"
+      "notes": "Near water: automatic watering and faster growth; special geometry"
     },
     {
       "id": "stardewcraft:tomato_crop",
@@ -1061,7 +1061,7 @@
       "harvest": "transforms_to_forage",
       "giant": false,
       "soil": "native_crop_support",
-      "notes": "При созревании заменяется сезонным ForageBlock"
+      "notes": "Replaced by a seasonal ForageBlock at maturity"
     },
     {
       "id": "stardewcraft:yam_crop",

@@ -122,7 +122,7 @@ public class IrrigationChannelRenderer extends IrrigationComponentRenderer<Irrig
 		// shaft from the gate top up to the hand-wheel
 		this.drawBox(poseStack, consumer, iron, packedLight, packedOverlay, 7 * U, maxY, 7 * U, 9 * U, 15 * U, 9 * U);
 
-		// hand-wheel: the original baked model (correct red штурвал texture), rotating 0->180 as it opens
+		// hand-wheel: the original baked model (correct red hand-wheel texture), rotating 0->180 as it opens
 		BakedModel wheelModel = PlatformClient.get().getStandaloneModel(VALVE_WHEEL_MODEL);
 		if (wheelModel != null) {
 			poseStack.pushPose();

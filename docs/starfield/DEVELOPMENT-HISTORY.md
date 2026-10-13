@@ -12,12 +12,12 @@ Historical development notes before release 4.0.20. Current support and verifica
 - Direct planting of harvested coffee beans preserves their full produce genotype.
 - Added the English and Russian Jade inspection setting translations required when returning to the menu after disconnecting.
 - Real IF gatherer and PNC drone harvest operations verify inherited output and single consumption. PNC item filters now use native produce metadata instead of the crop's empty block-breaking loot table.
-- Added a 4096-block native farm benchmark, opt-in two-client acceptance harness, official older-version loading profile and isolated installed-release restart check. Results and remaining release limits: `docs/starfield/ACCEPTANCE-RU.md`.
+- Added a 4096-block native farm benchmark, opt-in two-client acceptance harness, official older-version loading profile and isolated installed-release restart check. Results and remaining release limits: `docs/starfield/ACCEPTANCE.md`.
 
 - Corrected legacy chunk migration to retain the local Y offset within each section; previously plants away from a section boundary could be missed. Native phase/day state is preserved.
 - Release regression: chunk-indexed genome snapshots and one migration scan per loaded chunk, with no repeated block traversal for each watcher. Save schema remains 1; malformed/future data remains preserved.
 - Disabled native wild-seed transformation now preserves existing dormant UUID/genome/sticks across reactivation, while native growth/selection continues unchanged.
-- Added cross-process enabled → disabled → enabled world migration, 16,384-entry SavedData checks and ordinary multiplayer inspection checks. Added a consolidated Russian user guide and pinned dependency/material review. Completion acceptance verifies stick placement/rendering, two real clients and installed-release persistence; no version bump or publication.
+- Added cross-process enabled → disabled → enabled world migration, 16,384-entry SavedData checks and ordinary multiplayer inspection checks. Added a consolidated user guide and pinned dependency/material review. Completion acceptance verifies stick placement/rendering, two real clients and installed-release persistence; no version bump or publication.
 
 - Optional NeoForge integration for the verified Starfield Pastoral `0.6.3fix1`: native crop catalog, preserved seed genomes, planting identity and trowel transfer. Native seed placement into empty single sticks and all three attached stick models are implemented.
 - Paired native daily-growth checks cover baseline maturity, dry days, soils, seasons, fertilizer, real chunk unload, offline farm catch-up and full server restart. Native Starfield remains the only calendar/phase executor.

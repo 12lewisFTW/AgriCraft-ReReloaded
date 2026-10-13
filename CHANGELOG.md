@@ -78,7 +78,7 @@
 
 - CHANGED: Magnifying glass tooltip max width increased by 30% to fit longer condition messages
 - CHANGED: The "needs a specific block" condition line now always renders last among unmet growth conditions, and its intro line is shown before the block riddle instead of the riddle alone
-- FIXED: Seed Analyzer stat labels (e.g. "Мутативность") overflowing past the GUI panel on longer translations by shrinking them to fit instead
+- FIXED: Seed Analyzer stat labels (e.g. "Mutativity") overflowing past the GUI panel on longer translations by shrinking them to fit instead
 - FIXED: Journal introduction pages — "Newly Ported Features" moved from page 2 to page 3, to declutter page 2
 - FIXED: Journal "Plant Breeding Genetics" title overflowing on a single line on longer translations; it now wraps
 - FIXED: Mutation page showing a pink/black missing-texture icon for undiscovered parents/results on Fabric instead of the proper unknown-plant icon
@@ -148,4 +148,3 @@
 ## 1.20.1-4.0.1-beta
 
 - backport 1.20.4-4.0.1-beta to minecraft 1.20.1 (unilock)
-
