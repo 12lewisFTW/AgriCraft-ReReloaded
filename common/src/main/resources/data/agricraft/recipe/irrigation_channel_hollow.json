@@ -7,11 +7,11 @@
   },
   "pattern": [
     "PPP",
-    "PCP",
+    "CCC",
     "PPP"
   ],
   "result": {
-    "count": 1,
+    "count": 3,
     "id": "agricraft:irrigation_channel_hollow"
   }
 }
