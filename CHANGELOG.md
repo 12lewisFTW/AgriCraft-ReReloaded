@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.21.1-4.0.21
+
+### Fixed
+
+- Clippers in the offhand now clip AgriCraft plants instead of triggering ordinary harvesting with the main hand. Main-hand planting, fertilizer and rake actions retain priority, and empty-handed harvesting remains available.
+
+### Changed
+
+- Updated the sprinkler body, rotating blades and inventory model to use the model and texture contributed by [12lewisFTW](https://github.com/Vivoxti/AgriCraft-ReReloaded/issues/3). Blade geometry and UVs now come from a resource-pack model on both NeoForge and Fabric.
+
 ## 1.21.1-4.0.20
 
 ### Added

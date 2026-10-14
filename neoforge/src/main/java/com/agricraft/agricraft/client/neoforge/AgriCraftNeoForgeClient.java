@@ -58,6 +58,7 @@ public class AgriCraftNeoForgeClient {
 
 	@SubscribeEvent
 	public static void loadModels(ModelEvent.RegisterAdditional event) {
+		event.register(ModelResourceLocation.standalone(SprinklerRenderer.BLADES_MODEL));
 		for (Map.Entry<ResourceLocation, Resource> entry : FileToIdConverter.json("models/seed").listMatchingResources(Minecraft.getInstance().getResourceManager()).entrySet()) {
 			ResourceLocation seed = ResourceLocation.parse(entry.getKey().toString().replace("models/seed", "seed").replace(".json", ""));
 			event.register(ModelResourceLocation.standalone(seed));

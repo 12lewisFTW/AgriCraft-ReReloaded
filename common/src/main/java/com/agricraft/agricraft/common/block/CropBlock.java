@@ -288,7 +288,8 @@ public class CropBlock extends Block implements EntityBlock, BonemealableBlock, 
 			}
 		}
 		if (result == InteractionResult.PASS) {
-			if (heldItem.is(ModItems.CLIPPER.get())) {
+			if (heldItem.is(ModItems.CLIPPER.get())
+					|| (hand == InteractionHand.MAIN_HAND && player.getOffhandItem().is(ModItems.CLIPPER.get()))) {
 				return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
 			}
 			return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
@@ -354,6 +355,10 @@ public class CropBlock extends Block implements EntityBlock, BonemealableBlock, 
 			} else {
 				return InteractionResult.CONSUME;
 			}
+		}
+		// Let the offhand clipper run before ordinary harvesting or removing cross sticks.
+		if (player.getOffhandItem().is(ModItems.CLIPPER.get())) {
+			return InteractionResult.PASS;
 		}
 		// harvesting or de-cross-crop'ing if nothing else checks out
 		if (crop.isCrossCropSticks()) {

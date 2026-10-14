@@ -1,9 +1,9 @@
 {
+  "credit": "Model and texture by 12lewisFTW (GitHub issue #3)",
   "ambientocclusion": false,
   "textures": {
-    "wood": "minecraft:block/oak_planks",
-    "iron": "minecraft:block/iron_block",
-    "particle": "minecraft:block/iron_block"
+    "1": "agricraft:block/sprinkler",
+    "particle": "agricraft:block/sprinkler"
   },
   "elements": [
     {
@@ -11,11 +11,12 @@
       "from": [5, 15, 5],
       "to": [11, 16, 11],
       "faces": {
-        "north": {"uv": [5, 10, 11, 11], "texture": "#wood"},
-        "east": {"uv": [5, 10, 11, 11], "texture": "#wood"},
-        "south": {"uv": [5, 10, 11, 11], "texture": "#wood"},
-        "west": {"uv": [5, 10, 11, 11], "texture": "#wood"},
-        "down": {"uv": [5, 5, 11, 11], "texture": "#wood"}
+        "north": {"uv": [3, 3, 6, 3.5], "texture": "#1"},
+        "east": {"uv": [3, 3, 6, 3.5], "texture": "#1"},
+        "south": {"uv": [3, 3, 6, 3.5], "texture": "#1"},
+        "west": {"uv": [3, 3, 6, 3.5], "texture": "#1"},
+        "up": {"uv": [3, 0, 6, 3], "texture": "#1"},
+        "down": {"uv": [3, 0, 6, 3], "texture": "#1"}
       }
     },
     {
@@ -23,11 +24,11 @@
       "from": [6.5, 6, 6.5],
       "to": [9.5, 15, 9.5],
       "faces": {
-        "north": {"uv": [1, 5, 4, 14], "texture": "#iron"},
-        "east": {"uv": [4, 5, 7, 14], "texture": "#iron"},
-        "south": {"uv": [7, 5, 10, 14], "texture": "#iron"},
-        "west": {"uv": [10, 5, 13, 14], "texture": "#iron"},
-        "down": {"uv": [6, 6, 9, 9], "texture": "#iron"}
+        "north": {"uv": [0, 0, 1.5, 4.5], "texture": "#1"},
+        "east": {"uv": [0, 0, 1.5, 4.5], "texture": "#1"},
+        "south": {"uv": [0, 0, 1.5, 4.5], "texture": "#1"},
+        "west": {"uv": [0, 0, 1.5, 4.5], "texture": "#1"},
+        "down": {"uv": [1.5, 0, 3, 1.5], "texture": "#1"}
       }
     }
   ]

@@ -1,10 +1,11 @@
 {
   "homepage": "https://github.com/Vivoxti/AgriCraft-ReReloaded/releases",
   "promos": {
-    "1.21.1-latest": "4.0.20",
-    "1.21.1-recommended": "4.0.20"
+    "1.21.1-latest": "4.0.21",
+    "1.21.1-recommended": "4.0.21"
   },
   "1.21.1": {
+    "4.0.21": "Updated sprinkler model and texture; fixed offhand clippers triggering ordinary harvesting. See CHANGELOG.md.",
     "4.0.20": "Starfield Pastoral 0.6.3fix1 compatibility, native crop genetics, irrigation, breeding and harvesting. See CHANGELOG.md.",
     "4.0.19": "Croptopia and The One Probe compatibility."
   }

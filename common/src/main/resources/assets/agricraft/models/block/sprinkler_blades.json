@@ -1,0 +1,67 @@
+{
+  "credit": "Model and texture by 12lewisFTW (GitHub issue #3)",
+  "ambientocclusion": false,
+  "textures": {
+    "1": "agricraft:block/sprinkler",
+    "particle": "agricraft:block/sprinkler"
+  },
+  "elements": [
+    {
+      "name": "blade_north",
+      "from": [7, 5, 1],
+      "to": [9, 6, 7],
+      "faces": {
+        "north": {"uv": [6.5, 4, 7.5, 4.5], "texture": "#1"},
+        "west": {"uv": [9.5, 0, 10, 3.5], "texture": "#1", "rotation": 90},
+        "east": {"uv": [9.5, 0, 10, 3.5], "texture": "#1", "rotation": 270},
+        "up": {"uv": [6.5, 0, 7.5, 3.5], "texture": "#1", "rotation": 180},
+        "down": {"uv": [8, 0, 9, 3.5], "texture": "#1"}
+      }
+    },
+    {
+      "name": "blade_west",
+      "from": [1, 5, 7],
+      "to": [7, 6, 9],
+      "faces": {
+        "west": {"uv": [6.5, 4, 7.5, 4.5], "texture": "#1"},
+        "south": {"uv": [9.5, 0, 10, 3.5], "texture": "#1", "rotation": 90},
+        "north": {"uv": [9.5, 0, 10, 3.5], "texture": "#1", "rotation": 270},
+        "up": {"uv": [6.5, 0, 7.5, 3.5], "texture": "#1", "rotation": 90},
+        "down": {"uv": [8, 0, 9, 3.5], "texture": "#1", "rotation": 90}
+      }
+    },
+    {
+      "name": "blade_south",
+      "from": [7, 5, 9],
+      "to": [9, 6, 15],
+      "faces": {
+        "south": {"uv": [6.5, 4, 7.5, 4.5], "texture": "#1"},
+        "east": {"uv": [9.5, 0, 10, 3.5], "texture": "#1", "rotation": 90},
+        "west": {"uv": [9.5, 0, 10, 3.5], "texture": "#1", "rotation": 270},
+        "up": {"uv": [6.5, 0, 7.5, 3.5], "texture": "#1"},
+        "down": {"uv": [8, 0, 9, 3.5], "texture": "#1", "rotation": 180}
+      }
+    },
+    {
+      "name": "blade_east",
+      "from": [9, 5, 7],
+      "to": [15, 6, 9],
+      "faces": {
+        "east": {"uv": [6.5, 4, 7.5, 4.5], "texture": "#1"},
+        "north": {"uv": [9.5, 0, 10, 3.5], "texture": "#1", "rotation": 90},
+        "south": {"uv": [9.5, 0, 10, 3.5], "texture": "#1", "rotation": 270},
+        "up": {"uv": [6.5, 0, 7.5, 3.5], "texture": "#1", "rotation": 270},
+        "down": {"uv": [8, 0, 9, 3.5], "texture": "#1", "rotation": 270}
+      }
+    },
+    {
+      "name": "centre",
+      "from": [7, 5, 7],
+      "to": [9, 6, 9],
+      "faces": {
+        "up": {"uv": [1.5, 0, 2.5, 1], "texture": "#1"},
+        "down": {"uv": [1.5, 0, 2.5, 1], "texture": "#1"}
+      }
+    }
+  ]
+}
