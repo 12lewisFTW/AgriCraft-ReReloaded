@@ -5,7 +5,7 @@
     "W": {"tag": "minecraft:planks"},
     "I": {"item": "minecraft:iron_bars"},
     "B": {"item": "minecraft:bucket"},
-    "F": {"item": "minecraft:iron_ingot"}
+    "F": {"tag": "agricraft:ingots/iron"}
   },
   "pattern": [
     " W ",
