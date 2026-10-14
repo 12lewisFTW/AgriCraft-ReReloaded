@@ -6,7 +6,7 @@
       "tag": "agricraft:ingots/iron"
     },
     "S": {
-      "item": "minecraft:string"
+      "tag": "agricraft:string"
     },
     "s": {
       "tag": "agricraft:rods/wooden"
