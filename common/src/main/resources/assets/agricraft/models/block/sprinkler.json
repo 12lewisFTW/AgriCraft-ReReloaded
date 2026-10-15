@@ -1,35 +1,36 @@
 {
-  "credit": "Model and texture by 12lewisFTW (GitHub issue #3)",
-  "ambientocclusion": false,
-  "textures": {
-    "1": "agricraft:block/sprinkler",
-    "particle": "agricraft:block/sprinkler"
-  },
-  "elements": [
-    {
-      "name": "attachment",
-      "from": [5, 15, 5],
-      "to": [11, 16, 11],
-      "faces": {
-        "north": {"uv": [3, 3, 6, 3.5], "texture": "#1"},
-        "east": {"uv": [3, 3, 6, 3.5], "texture": "#1"},
-        "south": {"uv": [3, 3, 6, 3.5], "texture": "#1"},
-        "west": {"uv": [3, 3, 6, 3.5], "texture": "#1"},
-        "up": {"uv": [3, 0, 6, 3], "texture": "#1"},
-        "down": {"uv": [3, 0, 6, 3], "texture": "#1"}
-      }
-    },
-    {
-      "name": "tube",
-      "from": [6.5, 6, 6.5],
-      "to": [9.5, 15, 9.5],
-      "faces": {
-        "north": {"uv": [0, 0, 1.5, 4.5], "texture": "#1"},
-        "east": {"uv": [0, 0, 1.5, 4.5], "texture": "#1"},
-        "south": {"uv": [0, 0, 1.5, 4.5], "texture": "#1"},
-        "west": {"uv": [0, 0, 1.5, 4.5], "texture": "#1"},
-        "down": {"uv": [1.5, 0, 3, 1.5], "texture": "#1"}
-      }
-    }
-  ]
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"ambientocclusion": false,
+	"textures": {
+		"1": "agricraft:block/sprinkler",
+		"particle": "agricraft:block/sprinkler"
+	},
+	"elements": [
+		{
+			"name": "attachment",
+			"from": [5, 15, 5],
+			"to": [11, 16, 11],
+			"faces": {
+				"north": {"uv": [3, 3, 6, 3.5], "texture": "#1"},
+				"east": {"uv": [3, 3, 6, 3.5], "texture": "#1"},
+				"south": {"uv": [3, 3, 6, 3.5], "texture": "#1"},
+				"west": {"uv": [3, 3, 6, 3.5], "texture": "#1"},
+				"up": {"uv": [3, 0, 6, 3], "texture": "#1"},
+				"down": {"uv": [3, 0, 6, 3], "texture": "#1"}
+			}
+		},
+		{
+			"name": "tube",
+			"from": [6.5, 6, 6.5],
+			"to": [9.5, 15, 9.5],
+			"faces": {
+				"north": {"uv": [0, 0, 1.5, 4.5], "texture": "#1"},
+				"east": {"uv": [0, 0, 1.5, 4.5], "texture": "#1"},
+				"south": {"uv": [0, 0, 1.5, 4.5], "texture": "#1"},
+				"west": {"uv": [0, 0, 1.5, 4.5], "texture": "#1"},
+				"down": {"uv": [1.5, 0, 3, 1.5], "texture": "#1"}
+			}
+		}
+	]
 }
