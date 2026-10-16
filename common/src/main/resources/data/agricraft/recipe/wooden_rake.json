@@ -3,15 +3,16 @@
   "category": "equipment",
   "key": {
     "f": {
-      "tag": "agricraft:fences/wooden"
+      "item": "agricraft:wooden_crop_sticks"
     },
     "s": {
       "tag": "agricraft:rods/wooden"
     }
   },
   "pattern": [
-    "f",
-    "s"
+    "f  ",
+    " s ",
+    "  s"
   ],
   "result": {
     "id": "agricraft:wooden_rake"

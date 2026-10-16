@@ -5,13 +5,16 @@
     "i": {
       "tag": "agricraft:ingots/iron"
     },
+    "S": {
+      "tag": "agricraft:string"
+    },
     "s": {
       "tag": "agricraft:rods/wooden"
     }
   },
   "pattern": [
-    "  s",
-    "ii "
+    "iS",
+    " s"
   ],
   "result": {
     "id": "agricraft:trowel"

@@ -44,7 +44,7 @@ public class DatagenEventHandler {
 	public static void onGatherData(GatherDataEvent event) {
 		DataGenerator generator = event.getGenerator();
 		ExistingFileHelper fileHelper = new LenientExistingFileHelper(event.getExistingFileHelper());
-		// Recipes are now handwritten in common/src/main/resources/data/agricraft/recipes/ using vanilla 1.21.1 format
+		// Recipes are handwritten in common/src/main/resources/data/agricraft/recipe/ using vanilla 1.21.1 format.
 		// generator.addProvider(event.includeServer(), (DataProvider.Factory<RecipeProvider>) output -> new ModRecipeProvider(output, event.getLookupProvider()));
 		generator.addProvider(event.includeServer(), (DataProvider.Factory<ModGlobalLootModifierProvider>) output -> new ModGlobalLootModifierProvider(output, event.getLookupProvider()));
 		BlockTagsProvider blockTagsProvider = generator.addProvider(event.includeServer(), (DataProvider.Factory<BlockTagsProvider>) output -> new ModBlockTagProvider(output, event.getLookupProvider(), AgriApi.MOD_ID, fileHelper));

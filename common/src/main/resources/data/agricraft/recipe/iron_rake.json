@@ -10,8 +10,9 @@
     }
   },
   "pattern": [
-    "b",
-    "s"
+    "b  ",
+    " s ",
+    "  s"
   ],
   "result": {
     "id": "agricraft:iron_rake"

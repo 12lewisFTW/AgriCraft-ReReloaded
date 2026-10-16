@@ -23,3 +23,7 @@ Optional **Starfield Pastoral 0.6.3fix1** compatibility is available on NeoForge
 See the [user guide](docs/starfield/USER-GUIDE.md) for setup and gameplay, [release notes](docs/releases/4.0.20.md) for supported features and limits, and [acceptance report](docs/starfield/ACCEPTANCE.md) for verification.
 
 For source builds, generate the compatibility data with `gradlew :neoforge:runData` before running `gradlew build`. To check the Croptopia packs against an installed Croptopia 4.x jar, run `python tests/verify_croptopia_pack.py <Croptopia.jar> <AgriCraft-neoforge.jar> <AgriCraft-fabric.jar>`.
+
+## Community contributors
+
+Thanks to [12lewisFTW](https://github.com/12lewisFTW) for the [sprinkler artwork](https://github.com/Vivoxti/AgriCraft-ReReloaded/issues/3), [crop-stick model and texture redesign](https://github.com/Vivoxti/AgriCraft-ReReloaded/issues/4), and [updated crafting recipes](https://github.com/Vivoxti/AgriCraft-ReReloaded/pull/6). The crop-stick artwork includes further maintainer revisions, with matching selection and collision shapes.

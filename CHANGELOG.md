@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.21.1-4.0.22
 
 ### Fixed
 
@@ -8,7 +8,12 @@
 
 ### Changed
 
-- Updated wooden, iron and obsidian crop-stick models, block textures and item icons from the revised local artwork based on 12lewisFTW's contribution.
+- Updated wooden, iron and obsidian crop-stick models, block textures and item icons using the revised artwork based on [12lewisFTW's contribution](https://github.com/Vivoxti/AgriCraft-ReReloaded/pull/6).
+- Revised the crafting recipes for clippers, both hand rakes, hollow irrigation channels, magnifying glasses, seed analyzers, sprinklers and gardening trowels. Hollow channels now craft in batches of three; magnifying glasses and trowels fit the inventory crafting grid.
+
+### Credits
+
+- Thanks to [12lewisFTW](https://github.com/12lewisFTW) for the crop-stick model and texture redesign, updated crafting recipes, and earlier sprinkler artwork. Their original PR commits are preserved in the project history.
 
 ## 1.21.1-4.0.21
 

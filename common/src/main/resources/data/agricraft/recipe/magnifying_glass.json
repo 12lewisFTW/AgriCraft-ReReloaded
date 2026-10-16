@@ -10,9 +10,8 @@
     }
   },
   "pattern": [
-    "sgs",
-    " s ",
-    " s "
+    " g",
+    "s "
   ],
   "result": {
     "id": "agricraft:magnifying_glass"
