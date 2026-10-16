@@ -62,18 +62,19 @@ import java.util.stream.Stream;
 @SuppressWarnings("deprecation")
 public class CropBlock extends Block implements EntityBlock, BonemealableBlock, SimpleFluidloggedBlock {
 
+	// Keep these boxes aligned with the crop_sticks and cross_crop_sticks block models.
 	public static final VoxelShape SINGLE_STICKS = Stream.of(
-			Block.box(2, -3, 2, 3, 14, 3),
-			Block.box(13, -3, 2, 14, 14, 3),
-			Block.box(2, -3, 13, 3, 14, 14),
-			Block.box(13, -3, 13, 14, 14, 14)
+			Block.box(2, -2, 2, 3, 14, 3),
+			Block.box(13, -2, 2, 14, 14, 3),
+			Block.box(2, -2, 13, 3, 14, 14),
+			Block.box(13, -2, 13, 14, 14, 14)
 	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
 	public static final VoxelShape CROSS_STICKS = Stream.of(
 			SINGLE_STICKS,
-			Block.box(0, 11, 2, 16, 12, 3),
-			Block.box(0, 11, 13, 16, 12, 14),
-			Block.box(2, 11, 0, 3, 12, 16),
-			Block.box(13, 11, 0, 14, 12, 16)
+			Block.box(0, 10, 1, 16, 11, 2),
+			Block.box(0, 10, 12, 16, 11, 13),
+			Block.box(1, 11, 0, 2, 12, 16),
+			Block.box(14, 11, 0, 15, 12, 16)
 	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
 	public static final VoxelShape CROP_STICKS = Stream.of(
 			Block.box(2, 0, 2, 3, 14, 3),

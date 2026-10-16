@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+
+- Crop-stick selection and collision shapes now match the updated models, including the shifted crossbars and the depth of the vertical posts.
+
+### Changed
+
+- Updated wooden, iron and obsidian crop-stick models, block textures and item icons from the revised local artwork based on 12lewisFTW's contribution.
+
 ## 1.21.1-4.0.21
 
 ### Fixed

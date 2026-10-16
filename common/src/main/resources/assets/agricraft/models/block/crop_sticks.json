@@ -1,4 +1,6 @@
 {
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
 	"elements": [
 		{
 			"name": "stick_1",
@@ -9,8 +11,8 @@
 				"east": {"uv": [1, 0, 2, 16], "texture": "#crop_sticks"},
 				"south": {"uv": [2, 0, 3, 16], "texture": "#crop_sticks"},
 				"west": {"uv": [3, 0, 4, 16], "texture": "#crop_sticks"},
-				"up": {"uv": [0, 0, 1, 1], "texture": "#crop_sticks"},
-				"down": {"uv": [0, 15, 1, 16], "texture": "#crop_sticks"}
+				"up": {"uv": [4, 0, 5, 1], "texture": "#crop_sticks"},
+				"down": {"uv": [4, 1, 5, 2], "texture": "#crop_sticks"}
 			}
 		},
 		{
@@ -22,8 +24,8 @@
 				"east": {"uv": [1, 0, 2, 16], "texture": "#crop_sticks"},
 				"south": {"uv": [2, 0, 3, 16], "texture": "#crop_sticks"},
 				"west": {"uv": [3, 0, 4, 16], "texture": "#crop_sticks"},
-				"up": {"uv": [0, 0, 1, 1], "texture": "#crop_sticks"},
-				"down": {"uv": [0, 15, 1, 16], "texture": "#crop_sticks"}
+				"up": {"uv": [4, 0, 5, 1], "texture": "#crop_sticks"},
+				"down": {"uv": [4, 1, 5, 2], "texture": "#crop_sticks"}
 			}
 		},
 		{
@@ -35,8 +37,8 @@
 				"east": {"uv": [1, 0, 2, 16], "texture": "#crop_sticks"},
 				"south": {"uv": [2, 0, 3, 16], "texture": "#crop_sticks"},
 				"west": {"uv": [3, 0, 4, 16], "texture": "#crop_sticks"},
-				"up": {"uv": [0, 0, 1, 1], "texture": "#crop_sticks"},
-				"down": {"uv": [0, 15, 1, 16], "texture": "#crop_sticks"}
+				"up": {"uv": [4, 0, 5, 1], "texture": "#crop_sticks"},
+				"down": {"uv": [4, 1, 5, 2], "texture": "#crop_sticks"}
 			}
 		},
 		{
@@ -48,8 +50,8 @@
 				"east": {"uv": [1, 0, 2, 16], "texture": "#crop_sticks"},
 				"south": {"uv": [2, 0, 3, 16], "texture": "#crop_sticks"},
 				"west": {"uv": [3, 0, 4, 16], "texture": "#crop_sticks"},
-				"up": {"uv": [0, 0, 1, 1], "texture": "#crop_sticks"},
-				"down": {"uv": [0, 15, 1, 16], "texture": "#crop_sticks"}
+				"up": {"uv": [4, 0, 5, 1], "texture": "#crop_sticks"},
+				"down": {"uv": [4, 1, 5, 2], "texture": "#crop_sticks"}
 			}
 		}
 	]

@@ -1,4 +1,9 @@
 {
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"particle": "block/texture"
+	},
 	"elements": [
 		{
 			"name": "stick_1",
@@ -9,8 +14,8 @@
 				"east": {"uv": [1, 0, 2, 16], "texture": "#crop_sticks"},
 				"south": {"uv": [2, 0, 3, 16], "texture": "#crop_sticks"},
 				"west": {"uv": [3, 0, 4, 16], "texture": "#crop_sticks"},
-				"up": {"uv": [0, 0, 1, 1], "texture": "#crop_sticks"},
-				"down": {"uv": [0, 15, 1, 16], "texture": "#crop_sticks"}
+				"up": {"uv": [4, 0, 5, 1], "texture": "#crop_sticks"},
+				"down": {"uv": [4, 1, 5, 2], "texture": "#crop_sticks"}
 			}
 		},
 		{
@@ -22,8 +27,8 @@
 				"east": {"uv": [1, 0, 2, 16], "texture": "#crop_sticks"},
 				"south": {"uv": [2, 0, 3, 16], "texture": "#crop_sticks"},
 				"west": {"uv": [3, 0, 4, 16], "texture": "#crop_sticks"},
-				"up": {"uv": [0, 0, 1, 1], "texture": "#crop_sticks"},
-				"down": {"uv": [0, 15, 1, 16], "texture": "#crop_sticks"}
+				"up": {"uv": [4, 0, 5, 1], "texture": "#crop_sticks"},
+				"down": {"uv": [4, 1, 5, 2], "texture": "#crop_sticks"}
 			}
 		},
 		{
@@ -35,8 +40,8 @@
 				"east": {"uv": [1, 0, 2, 16], "texture": "#crop_sticks"},
 				"south": {"uv": [2, 0, 3, 16], "texture": "#crop_sticks"},
 				"west": {"uv": [3, 0, 4, 16], "texture": "#crop_sticks"},
-				"up": {"uv": [0, 0, 1, 1], "texture": "#crop_sticks"},
-				"down": {"uv": [0, 15, 1, 16], "texture": "#crop_sticks"}
+				"up": {"uv": [4, 0, 5, 1], "texture": "#crop_sticks"},
+				"down": {"uv": [4, 1, 5, 2], "texture": "#crop_sticks"}
 			}
 		},
 		{
@@ -48,44 +53,47 @@
 				"east": {"uv": [1, 0, 2, 16], "texture": "#crop_sticks"},
 				"south": {"uv": [2, 0, 3, 16], "texture": "#crop_sticks"},
 				"west": {"uv": [3, 0, 4, 16], "texture": "#crop_sticks"},
-				"up": {"uv": [0, 0, 1, 1], "texture": "#crop_sticks"},
-				"down": {"uv": [0, 15, 1, 16], "texture": "#crop_sticks"}
+				"up": {"uv": [4, 0, 5, 1], "texture": "#crop_sticks"},
+				"down": {"uv": [4, 1, 5, 2], "texture": "#crop_sticks"}
 			}
 		},
 		{
 			"name": "cross_stick_1",
-			"from": [0, 11, 2],
-			"to": [16, 12, 3],
+			"from": [0, 10, 1],
+			"to": [16, 11, 2],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, -1, -1]},
 			"faces": {
 				"north": {"uv": [0, 0, 1, 16], "rotation": 90, "texture": "#crop_sticks"},
-				"east": {"uv": [0, 15, 1, 16], "texture": "#crop_sticks"},
+				"east": {"uv": [4, 0, 5, 1], "texture": "#crop_sticks"},
 				"south": {"uv": [2, 0, 3, 16], "rotation": 90, "texture": "#crop_sticks"},
-				"west": {"uv": [0, 0, 1, 1], "texture": "#crop_sticks"},
+				"west": {"uv": [4, 1, 5, 2], "texture": "#crop_sticks"},
 				"up": {"uv": [1, 0, 2, 16], "rotation": 90, "texture": "#crop_sticks"},
 				"down": {"uv": [3, 0, 4, 16], "rotation": 90, "texture": "#crop_sticks"}
 			}
 		},
 		{
 			"name": "cross_stick_2",
-			"from": [0, 11, 13],
-			"to": [16, 12, 14],
+			"from": [0, 10, 12],
+			"to": [16, 11, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, -1, -1]},
 			"faces": {
 				"north": {"uv": [0, 0, 1, 16], "rotation": 90, "texture": "#crop_sticks"},
-				"east": {"uv": [0, 15, 1, 16], "texture": "#crop_sticks"},
+				"east": {"uv": [4, 0, 5, 1], "texture": "#crop_sticks"},
 				"south": {"uv": [2, 0, 3, 16], "rotation": 90, "texture": "#crop_sticks"},
-				"west": {"uv": [0, 0, 1, 1], "texture": "#crop_sticks"},
+				"west": {"uv": [4, 1, 5, 2], "texture": "#crop_sticks"},
 				"up": {"uv": [1, 0, 2, 16], "rotation": 90, "texture": "#crop_sticks"},
 				"down": {"uv": [3, 0, 4, 16], "rotation": 90, "texture": "#crop_sticks"}
 			}
 		},
 		{
 			"name": "cross_stick_3",
-			"from": [2, 11, 0],
-			"to": [3, 12, 16],
+			"from": [1, 11, 0],
+			"to": [2, 12, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [-1, 0, 0]},
 			"faces": {
-				"north": {"uv": [0, 0, 1, 1], "rotation": 90, "texture": "#crop_sticks"},
+				"north": {"uv": [4, 0, 5, 1], "rotation": 90, "texture": "#crop_sticks"},
 				"east": {"uv": [0, 0, 1, 16], "rotation": 90, "texture": "#crop_sticks"},
-				"south": {"uv": [0, 15, 1, 16], "rotation": 90, "texture": "#crop_sticks"},
+				"south": {"uv": [4, 1, 5, 2], "rotation": 90, "texture": "#crop_sticks"},
 				"west": {"uv": [2, 0, 3, 16], "rotation": 90, "texture": "#crop_sticks"},
 				"up": {"uv": [1, 0, 2, 16], "texture": "#crop_sticks"},
 				"down": {"uv": [3, 0, 4, 16], "texture": "#crop_sticks"}
@@ -93,12 +101,13 @@
 		},
 		{
 			"name": "cross_stick_4",
-			"from": [13, 11, 0],
-			"to": [14, 12, 16],
+			"from": [14, 11, 0],
+			"to": [15, 12, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [1, 0, 0]},
 			"faces": {
-				"north": {"uv": [0, 0, 1, 1], "rotation": 90, "texture": "#crop_sticks"},
+				"north": {"uv": [4, 0, 5, 1], "rotation": 90, "texture": "#crop_sticks"},
 				"east": {"uv": [0, 0, 1, 16], "rotation": 90, "texture": "#crop_sticks"},
-				"south": {"uv": [0, 15, 1, 16], "rotation": 90, "texture": "#crop_sticks"},
+				"south": {"uv": [4, 1, 5, 2], "rotation": 90, "texture": "#crop_sticks"},
 				"west": {"uv": [2, 0, 3, 16], "rotation": 90, "texture": "#crop_sticks"},
 				"up": {"uv": [1, 0, 2, 16], "texture": "#crop_sticks"},
 				"down": {"uv": [3, 0, 4, 16], "texture": "#crop_sticks"}
